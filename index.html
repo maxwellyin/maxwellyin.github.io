@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maxwell J. Yin - Machine Learning Engineer (LLM Systems) / Applied Scientist</title>
+  <meta
+    name="description"
+    content="Maxwell J. Yin - Machine Learning Engineer (LLM Systems) / Applied Scientist in Toronto, Canada. Specializing in LLM training, distributed systems, retrieval, evaluation, and deployment-aware optimization."
+  />
+  <meta
+    name="keywords"
+    content="Maxwell J. Yin, Machine Learning Engineer, Applied Scientist, LLM, LLM Systems, Distributed Training, DeepSpeed, Retrieval, RAG, FAISS, Evaluation, PyTorch, Toronto"
+  />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --accent: #1d4ed8;
+      --accent-dark: #1e40af;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --max-width: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      color: white;
+      padding: 48px 20px 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    header .subtitle {
+      margin-top: 10px;
+      font-size: 1.08rem;
+      color: #d1d5db;
+    }
+
+    header img {
+      margin-top: 20px;
+      width: 180px;
+      max-width: 70vw;
+      border-radius: 14px;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+    }
+
+    .links {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .links a {
+      color: #dbeafe;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .links a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      text-decoration: none;
+    }
+
+    main {
+      padding: 30px 16px 48px;
+    }
+
+    section {
+      max-width: var(--max-width);
+      margin: 0 auto 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 28px 28px 24px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.45rem;
+      color: #111827;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-dark);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 8px 16px 32px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 22px 18px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Maxwell J. Yin</h1>
+    <p class="subtitle">Machine Learning Engineer (LLM Systems) / Applied Scientist • Toronto, Canada</p>
+    <img src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
+    <div class="links">
+      <a href="https://www.linkedin.com/in/mjyin/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="mailto:maxwellyin@icloud.com">Email</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>About</h2>
+      <p>
+        I am a Machine Learning Engineer / Applied Scientist based in Toronto, Canada, specializing in building scalable LLM systems from training to evaluation and deployment-aware optimization.
+      </p>
+      <p>
+        My recent work focuses on large-scale Transformer pretraining, distributed training optimization across multi-GPU systems, and production-oriented evaluation frameworks that balance model quality, latency, and infrastructure cost.
+      </p>
+      <p>
+        I am particularly interested in bridging research and real-world systems: translating modeling advances into efficient, reliable, and measurable GenAI applications.
+      </p>
+    </section>
+
+    <section>
+      <h2>Selected Work</h2>
+      <ul>
+        <li>
+          <strong>LLM Pretraining at Scale</strong>: Trained a 400M-parameter Transformer on 40B tokens using 8×H100 GPUs with DeepSpeed, improving training stability, throughput, and memory efficiency.
+        </li>
+        <li>
+          <strong>Evaluation &amp; Model Selection</strong>: Built a unified evaluation pipeline integrating LM Harness and LongBench, enabling consistent comparison across checkpoints on reasoning accuracy, latency, and cost-efficiency.
+        </li>
+        <li>
+          <strong>System Optimization</strong>: Identified and resolved distributed training bottlenecks, including checkpoint synchronization issues, improving multi-GPU reliability and sustained performance.
+        </li>
+        <li>
+          <strong>Retrieval System Redesign</strong>: Designed a FAISS-based ANN retrieval system over 500K+ documents and 1.7M passages, reducing end-to-end latency by more than 5× while improving ranking quality.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Focus Areas</h2>
+      <ul>
+        <li><strong>LLM Systems &amp; Training</strong>: large-scale pretraining, distributed training, training stability, and performance optimization</li>
+        <li><strong>Retrieval &amp; RAG Systems</strong>: ANN search, embedding systems, scalable retrieval pipelines, and serving</li>
+        <li><strong>Evaluation &amp; Model Selection</strong>: benchmark design, controlled experimentation, reproducibility, and cost/latency-aware analysis</li>
+        <li><strong>Production-Oriented ML</strong>: deployment-aware design, inference efficiency, reliability, and measurable system trade-offs</li>
+        <li><strong>Tooling</strong>: PyTorch, HuggingFace Transformers, DeepSpeed, vLLM, FAISS, FastAPI, SQL</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Selected Publications</h2>
+      <ul>
+        <li>
+          <strong>TACL 2024</strong>:
+          <em>Source-Free Domain Adaptation for Question Answering with Masked Self-training</em>
+        </li>
+        <li>
+          <strong>NAACL Findings 2024</strong>:
+          <em>Source-Free Unsupervised Domain Adaptation for Question Answering via Prompt-Assisted Self-learning</em>
+        </li>
+        <li>
+          <strong>AAAI 2025</strong>:
+          <em>MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</em>
+        </li>
+        <li>
+          <strong>Expert Systems with Applications 2024</strong>:
+          <em>A Fast Local Citation Recommendation Algorithm Scalable to Multi-topics</em>
+        </li>
+        <li>
+          Full publication list on
+          <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:maxwellyin@icloud.com">maxwellyin@icloud.com</a><br />
+        Location: Toronto, ON, Canada
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © Maxwell J. Yin
+  </footer>
+</body>
+</html>
