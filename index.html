@@ -140,6 +140,63 @@
       color: var(--muted);
     }
 
+    .project-highlight {
+      border: 1px solid #dbe4f0;
+      border-radius: 20px;
+      padding: 22px;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+    }
+
+    .project-highlight h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    .project-highlight p {
+      margin-bottom: 16px;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .project-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .project-actions .primary-link {
+      background: var(--accent);
+      color: white;
+    }
+
+    .project-actions .primary-link:hover {
+      background: var(--accent-dark);
+      color: white;
+      text-decoration: none;
+    }
+
+    .project-actions .secondary-link {
+      border: 1px solid #bfdbfe;
+      background: white;
+      color: var(--accent);
+    }
+
+    .project-actions .secondary-link:hover {
+      background: #eff6ff;
+      text-decoration: none;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -200,6 +257,16 @@
           <strong>Retrieval System Redesign</strong>: Designed a FAISS-based ANN retrieval system over 500K+ documents and 1.7M passages, reducing end-to-end latency by more than 5× while improving ranking quality.
         </li>
       </ul>
+      <div class="project-highlight" style="margin-top: 22px;">
+        <h3>CineSeek: Semantic Movie Retrieval</h3>
+        <p>
+          A retrieval-first movie search system built around dual-tower training, FAISS indexing, and an optional LLM agent for query rewriting, reranking, and explanation.
+        </p>
+        <div class="project-actions">
+          <a class="primary-link" href="http://139.84.197.229:8000/search" target="_blank" rel="noopener">Live Demo</a>
+          <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source</a>
+        </div>
+      </div>
     </section>
 
     <section>
