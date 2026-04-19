@@ -1,13 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CineSeek | Maxwell J. Yin</title>
-  <meta
-    name="description"
-    content="CineSeek is a semantic movie retrieval system by Maxwell J. Yin, combining dual-tower retrieval, FAISS search, and optional LLM-based reranking."
-  />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CineSeek</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f1ea;
@@ -17,30 +14,18 @@
       --line: rgba(24, 34, 47, 0.12);
       --accent: #c65d2e;
       --accent-dark: #8b3513;
-      --card: rgba(255, 255, 255, 0.78);
+      --card: rgba(255, 255, 255, 0.76);
       --shadow: 0 18px 48px rgba(24, 34, 47, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     html, body {
       min-height: 100%;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
       background:
         radial-gradient(circle at top left, rgba(198, 93, 46, 0.10), transparent 28%),
         radial-gradient(circle at top right, rgba(24, 34, 47, 0.08), transparent 24%),
         linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
+      color: var(--ink);
       font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    }
-
-    a {
-      color: inherit;
     }
 
     .app-shell {
@@ -50,18 +35,13 @@
     }
 
     .brand-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-      padding: 14px 18px;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 248, 242, 0.76);
       border: 1px solid var(--line);
       border-radius: 24px;
-      background: rgba(251, 248, 242, 0.76);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
+      padding: 14px 18px;
+      margin-bottom: 24px;
     }
 
     .brand-mark {
@@ -69,6 +49,7 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+      color: var(--ink);
     }
 
     .brand-dot {
@@ -80,33 +61,25 @@
     }
 
     .brand-title {
-      display: block;
       font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: 0.01em;
     }
 
     .brand-subtitle {
-      margin: 0;
       color: var(--muted);
       font-size: 0.92rem;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    }
-
-    .nav-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      margin: 0;
     }
 
     .nav-pill {
-      padding: 8px 14px;
-      border-radius: 999px;
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.95rem;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      border-radius: 999px;
+      padding: 8px 14px;
       transition: all 0.18s ease;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.95rem;
     }
 
     .nav-pill:hover {
@@ -122,6 +95,29 @@
       box-shadow: var(--shadow);
     }
 
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.74rem;
+      color: var(--accent-dark);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 700;
+    }
+
+    .display-title {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      margin-bottom: 16px;
+      max-width: 10ch;
+    }
+
+    .lede, .body-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1.35fr 0.95fr;
@@ -129,79 +125,14 @@
       align-items: stretch;
     }
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.74rem;
-      color: var(--accent-dark);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      font-weight: 700;
-    }
-
-    .display-title {
-      margin: 14px 0 16px;
-      max-width: 10ch;
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 0.95;
-    }
-
-    .lede,
-    .body-copy,
-    .feature-copy,
-    .metric-label {
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.02rem;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #e77d4e);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #b94b1f, #d76a38);
-    }
-
-    .btn-secondary {
-      color: var(--ink);
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.96);
-    }
-
     .accent-panel {
-      position: relative;
-      overflow: hidden;
-      min-height: 100%;
-      padding: 26px;
-      border-radius: 26px;
       background: linear-gradient(160deg, rgba(24, 34, 47, 0.96), rgba(57, 78, 103, 0.92));
       color: #f7f2ea;
+      border-radius: 26px;
+      padding: 26px;
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
     }
 
     .accent-panel::after {
@@ -214,71 +145,111 @@
       background: radial-gradient(circle, rgba(241, 178, 76, 0.32), transparent 65%);
     }
 
-    .section-title {
-      margin: 12px 0 14px;
-      font-size: 1.65rem;
-    }
-
-    .metric-grid,
-    .feature-grid {
+    .metric-grid, .feature-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .metric-card,
-    .feature-card {
-      padding: 18px;
-      border: 1px solid var(--line);
+    .metric-card, .feature-card, .result-card {
       border-radius: 22px;
+      border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.72);
+      padding: 18px;
     }
 
     .metric-value {
-      margin-bottom: 6px;
       font-size: 1.9rem;
       font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    .section-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 20px;
-      margin-top: 20px;
+    .metric-label, .feature-copy, .mini-label {
+      color: var(--muted);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
 
-    .stack {
-      display: grid;
-      gap: 20px;
-      margin-top: 20px;
+    .section-title {
+      font-size: 1.65rem;
+      margin-bottom: 14px;
     }
 
-    .mono-block {
-      margin: 0;
-      padding: 18px 20px;
+    .search-form textarea {
       border-radius: 22px;
       border: 1px solid var(--line);
-      background: rgba(24, 34, 47, 0.94);
-      color: #f8f4ee;
-      overflow: auto;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      background: rgba(255, 255, 255, 0.92);
+      min-height: 150px;
+      padding: 18px 20px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      box-shadow: inset 0 1px 0 rgba(24, 34, 47, 0.04);
     }
 
-    footer {
-      padding: 12px 8px 8px;
-      text-align: center;
-      color: var(--muted);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      font-size: 0.95rem;
+    .search-form textarea:focus {
+      box-shadow: 0 0 0 0.25rem rgba(198, 93, 46, 0.16);
+      border-color: rgba(198, 93, 46, 0.45);
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, var(--accent), #e77d4e);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .primary-btn:hover {
+      color: white;
+      background: linear-gradient(135deg, #b94b1f, #d76a38);
+    }
+
+    .ghost-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 600;
+    }
+
+    .result-rank {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(198, 93, 46, 0.12);
+      color: var(--accent-dark);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-right: 10px;
+    }
+
+    .result-title {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .agent-note {
+      background: rgba(24, 34, 47, 0.94);
+      color: #f8f4ee;
+      border-radius: 24px;
+      padding: 20px 22px;
+    }
+
+    .mono {
+      font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 900px) {
-      .hero-grid,
-      .metric-grid,
-      .feature-grid,
-      .section-grid {
+      .hero-grid, .metric-grid, .feature-grid {
         grid-template-columns: 1fr;
       }
 
@@ -294,44 +265,45 @@
 </head>
 <body>
   <div class="app-shell">
-    <nav class="brand-nav">
-      <a class="brand-mark" href="http://139.84.197.229:8000/search" target="_blank" rel="noopener">
+    <nav class="brand-nav d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+      <a class="brand-mark" href="http://139.84.197.229:8000/">
         <span class="brand-dot"></span>
         <span>
-          <span class="brand-title">CineSeek</span>
+          <span class="brand-title d-block">CineSeek</span>
           <p class="brand-subtitle">Semantic movie retrieval with agent reranking</p>
         </span>
       </a>
-      <div class="nav-group">
-        <a class="nav-pill" href="http://139.84.197.229:8000/search" target="_blank" rel="noopener">Overview</a>
-        <a class="nav-pill" href="http://139.84.197.229:8000/search" target="_blank" rel="noopener">Try Search</a>
-        <a class="nav-pill" href="http://139.84.197.229:8000/search" target="_blank" rel="noopener">Launch</a>
+      <div class="d-flex flex-wrap gap-2">
+        <a class="nav-pill" href="http://139.84.197.229:8000/">Overview</a>
+        <a class="nav-pill" href="http://139.84.197.229:8000/search">Search</a>
+        <a class="nav-pill" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </nav>
 
     <section class="page-card">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Retrieval System</div>
-          <h1 class="display-title">Search movies by meaning, not keywords.</h1>
+          <div class="eyebrow mb-3">Retrieval System</div>
+          <h1 class="display-title">Search movies by meaning — not keywords.</h1>
           <p class="lede">
-            CineSeek is a semantic movie search system designed to show the full retrieval engineering loop:
-            dataset preparation, dual-tower training, FAISS indexing, low-latency serving, and optional LLM-based reranking.
+            CineSeek is a semantic movie search system that understands natural-language queries.
+            It combines embedding-based retrieval, FAISS-powered candidate search, and an optional LLM agent for reranking and explanation.
           </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="http://139.84.197.229:8000/search" target="_blank" rel="noopener">Try Search</a>
-            <a class="btn btn-secondary" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">View source</a>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn primary-btn" href="http://139.84.197.229:8000/search">Try Search</a>
+            <a class="ghost-link align-self-center" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noreferrer">View source</a>
           </div>
         </div>
 
         <div class="accent-panel">
-          <div class="eyebrow" style="color: rgba(255,255,255,0.68);">System Snapshot</div>
-          <h2 class="section-title">Retrieval-first architecture, with an optional LLM agent.</h2>
-          <p class="body-copy" style="color: rgba(247,242,234,0.72);">
-            The system keeps retrieval explicit and measurable: sentence embeddings, a lightweight dual-tower model,
-            FAISS nearest-neighbor search, and an optional agent layer for rewriting, reranking, and explanation.
+          <div class="eyebrow text-white-50 mb-3">System Snapshot</div>
+          <h2 class="section-title text-white">Retrieval-first architecture, with an optional LLM agent.</h2>
+          <p class="body-copy text-white-50">
+            The system keeps retrieval explicit and efficient: sentence embeddings, FAISS-based nearest neighbor search,
+            and a lightweight dual-tower model. An optional LLM agent improves ranking and adds explanations,
+            without replacing the underlying retrieval pipeline.
           </p>
-          <div class="metric-grid" style="margin-top: 22px;">
+          <div class="metric-grid mt-4">
             <div class="metric-card">
               <div class="metric-value">MSRD</div>
               <div class="metric-label">Real query-to-movie relevance labels</div>
@@ -342,81 +314,75 @@
             </div>
             <div class="metric-card">
               <div class="metric-value">Agent</div>
-              <div class="metric-label">Optional reranking, rewrite, and explanation layer</div>
+              <div class="metric-label">LLM-powered reranking, query rewriting, and explanation</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-grid">
-      <section class="page-card">
-        <div class="eyebrow">What It Does</div>
-        <h2 class="section-title">Built for fuzzy natural-language movie queries.</h2>
-        <p class="body-copy">
-          CineSeek maps user intent to relevant titles rather than relying on exact keyword overlap. It is trained on real query relevance data and structured so retrieval remains the core system primitive.
-        </p>
-        <div class="feature-grid" style="margin-top: 22px;">
-          <div class="feature-card">
-            <h3>Semantic Search</h3>
-            <p class="feature-copy">Queries and movies are projected into a shared space so the system can retrieve meaningfully related titles beyond surface text overlap.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Fast Retrieval</h3>
-            <p class="feature-copy">FAISS serves top-k nearest neighbors with low latency, making the stack usable as an interactive product rather than just an offline experiment.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Agent Refinement</h3>
-            <p class="feature-copy">An optional LLM agent rewrites vague queries, reranks the shortlist, and produces short summaries without replacing the retrieval layer itself.</p>
+    <section class="row g-4 mt-1">
+      <div class="col-lg-7">
+        <div class="page-card h-100">
+          <div class="eyebrow mb-3">What It Does</div>
+          <h2 class="section-title">Discover movies from natural-language descriptions.</h2>
+          <p class="body-copy mt-3 mb-0">
+            CineSeek is built for real, fuzzy movie queries — not just exact title matches.
+            It connects natural-language intent to relevant results through semantic retrieval and optional agent-based refinement.
+          </p>
+
+          <div class="feature-grid mt-4">
+            <div class="feature-card">
+              <h3 class="h5">Semantic Search</h3>
+              <p class="feature-copy mb-0">
+                Queries and movies are mapped into a shared embedding space, so the system can retrieve relevant titles beyond exact keyword overlap.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">Fast Retrieval</h3>
+              <p class="feature-copy mb-0">
+                FAISS provides low-latency nearest neighbor search, making the retrieval layer fast enough for interactive search experiences.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">Agent Refinement</h3>
+              <p class="feature-copy mb-0">
+                An optional LLM agent can refine vague queries, rerank retrieved candidates, and generate short explanations for the final results.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="page-card">
-        <div class="eyebrow">Request Path</div>
-        <h2 class="section-title">How a query moves through the system</h2>
-        <pre class="mono-block">user query
-  -> sentence-transformer embedding
-  -> query tower
-  -> FAISS retrieval over item embeddings
-  -> top-k candidates
-  -> optional LLM agent (rewrite / rerank / explain)
-  -> final results</pre>
-      </section>
-    </div>
+      <div class="col-lg-5">
+        <div class="page-card h-100">
+          <div class="eyebrow mb-3">Live System</div>
+          <h2 class="section-title">What happens after you submit a query</h2>
 
-    <div class="stack">
-      <section class="page-card">
-        <div class="eyebrow">Engineering Scope</div>
-        <h2 class="section-title">This is a retrieval system, not a prompt wrapper.</h2>
-        <p class="body-copy">
-          The project is structured to demonstrate an end-to-end retrieval workflow: prepare a labeled dataset, cache text embeddings, train a lightweight retriever, build an ANN index, expose a search interface, and then layer LLM assistance on top as a controlled enhancement.
-        </p>
-      </section>
-
-      <section class="page-card">
-        <div class="eyebrow">Tech Stack</div>
-        <h2 class="section-title">Core components</h2>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Modeling</h3>
-            <p class="feature-copy">PyTorch, Sentence-Transformers, dual-tower retrieval, cached embeddings.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Serving</h3>
-            <p class="feature-copy">FAISS for ANN search, FastAPI for the demo service, static project page on GitHub Pages.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Agent Layer</h3>
-            <p class="feature-copy">LangChain with Gemini, OpenAI, or Ollama for reranking and explanation.</p>
+          <div class="feature-grid mt-4" style="grid-template-columns: 1fr;">
+            <div class="feature-card">
+              <h3 class="h5">1. Retrieve</h3>
+              <p class="feature-copy mb-0">
+                The query is embedded and matched against a FAISS index built from movie representations.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">2. Rerank</h3>
+              <p class="feature-copy mb-0">
+                An LLM agent reorders the top candidates and helps resolve vague, broad, or ambiguous descriptions.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">3. Explain</h3>
+              <p class="feature-copy mb-0">
+                The system returns short explanations so the final recommendations feel more transparent and easier to inspect.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
-
-    <footer>
-      © Maxwell J. Yin
-    </footer>
+      </div>
+    </section>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
