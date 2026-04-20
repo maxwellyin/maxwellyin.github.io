@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,11 +8,11 @@
   <title>Maxwell J. Yin - Machine Learning Engineer</title>
   <meta
     name="description"
-    content="Maxwell J. Yin - Machine Learning Engineer / Applied Scientist in Toronto, Canada. Specializing in large-scale LLM systems, distributed training, retrieval, evaluation, and production deployment."
+    content="Maxwell J. Yin is a Machine Learning Engineer in Toronto specializing in LLM systems, distributed training, retrieval, inference optimization, and production ML."
   />
   <meta
     name="keywords"
-    content="Maxwell J. Yin, Machine Learning Engineer, Applied Scientist, LLM, LLM Systems, Distributed Training, DeepSpeed, Retrieval, RAG, FAISS, Evaluation, PyTorch, Toronto"
+    content="Maxwell J. Yin, Machine Learning Engineer, LLM Systems, Distributed Training, Retrieval, RAG, FAISS, Inference Optimization, PyTorch, DeepSpeed, Production ML, Toronto"
   />
   <style>
     :root {
@@ -24,11 +24,15 @@
       --accent-dark: #1e40af;
       --border: #e5e7eb;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --max-width: 920px;
+      --max-width: 940px;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -37,44 +41,59 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 100%;
     }
 
     header {
-      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
       color: white;
-      padding: 48px 20px 40px;
+      padding: 56px 20px 42px;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.4rem;
-      font-weight: 700;
+      font-size: 2.5rem;
+      font-weight: 750;
       letter-spacing: 0.2px;
     }
 
-    header .subtitle {
-      margin-top: 10px;
+    .subtitle {
+      margin: 12px auto 0;
+      max-width: 760px;
       font-size: 1.08rem;
       color: #d1d5db;
     }
 
-    header img {
-      margin-top: 20px;
-      width: 180px;
-      max-width: 70vw;
-      border-radius: 14px;
+    .hero-image {
+      margin-top: 22px;
+      width: 176px;
+      max-width: 68vw;
+      border-radius: 16px;
       border: 3px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
     }
 
     .links {
-      margin-top: 18px;
+      margin-top: 20px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
     }
 
     .links a {
@@ -84,16 +103,18 @@
       padding: 8px 14px;
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 999px;
-      transition: 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     }
 
     .links a:hover {
       background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
       text-decoration: none;
     }
 
     main {
-      padding: 30px 16px 48px;
+      padding: 30px 16px 50px;
     }
 
     section {
@@ -109,8 +130,15 @@
     h2 {
       margin-top: 0;
       margin-bottom: 14px;
-      font-size: 1.45rem;
+      font-size: 1.42rem;
       color: #111827;
+      letter-spacing: 0.1px;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      color: #0f172a;
     }
 
     p {
@@ -125,41 +153,47 @@
 
     li {
       margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: var(--accent-dark);
     }
 
     .muted {
       color: var(--muted);
     }
 
-    .project-highlight {
+    .lead {
+      font-size: 1.03rem;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience-item {
+      padding: 20px 20px 16px;
+      border: 1px solid #e6ebf2;
+      border-radius: 16px;
+      background: #fcfdff;
+    }
+
+    .experience-meta {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .project-card {
       border: 1px solid #dbe4f0;
       border-radius: 20px;
-      padding: 22px;
+      padding: 24px;
       background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
     }
 
-    .project-highlight h3 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
-      color: #0f172a;
-    }
-
-    .project-highlight p {
-      margin-bottom: 16px;
+    .project-card p:last-of-type {
+      margin-bottom: 0;
     }
 
     .project-actions {
+      margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -174,29 +208,53 @@
       border-radius: 999px;
       font-weight: 600;
       text-decoration: none;
-      transition: 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
-    .project-actions .primary-link {
+    .primary-link {
       background: var(--accent);
       color: white;
     }
 
-    .project-actions .primary-link:hover {
+    .primary-link:hover {
       background: var(--accent-dark);
       color: white;
       text-decoration: none;
+      transform: translateY(-1px);
     }
 
-    .project-actions .secondary-link {
+    .secondary-link {
       border: 1px solid #bfdbfe;
       background: white;
       color: var(--accent);
     }
 
-    .project-actions .secondary-link:hover {
+    .secondary-link:hover {
       background: #eff6ff;
       text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .publication-note {
+      margin-bottom: 14px;
+      color: var(--muted);
     }
 
     footer {
@@ -207,119 +265,157 @@
     }
 
     @media (max-width: 640px) {
+      header {
+        padding-top: 46px;
+      }
+
       header h1 {
         font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
       }
 
       section {
         padding: 22px 18px 18px;
       }
+
+      .experience-item,
+      .project-card {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Maxwell J. Yin</h1>
-    <p class="subtitle">Machine Learning Engineer • LLM Systems & GenAI, Distributed Training, and Production ML</p>
-    <img src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
-    <div class="links">
-      <a href="https://www.linkedin.com/in/mjyin/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/maxwellyin" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:maxwellyin@icloud.com">Email</a>
-    </div>
-  </header>
-
-  <main>
-    <section>
-      <h2>About</h2>
-      <p>
-        I am a Machine Learning Engineer with a Ph.D. in NLP, based in Toronto, Canada, specializing in large-scale LLM systems, distributed training, and production deployment.
+  <div class="container">
+    <header>
+      <h1>Maxwell J. Yin</h1>
+      <p class="subtitle">
+        Machine Learning Engineer specializing in scalable LLM systems, retrieval, and production ML.
       </p>
-      <p>
-        My work spans end-to-end Transformer training, system profiling and optimization, retrieval systems, and deployment-aware evaluation under real-world compute and latency constraints.
-      </p>
-      <p>
-        I am particularly interested in bridging research and production by building scalable, reliable ML systems that translate modeling advances into measurable real-world impact.
-      </p>
-    </section>
-
-    <section>
-      <h2>Selected Work</h2>
-      <ul>
-        <li>
-          <strong>LLM Systems &amp; Scaling</strong>: Owned the design and execution of a 400M-parameter Transformer pretraining pipeline trained on 40B tokens across 8×H100 GPUs, covering distributed training, evaluation, and deployment-aware model selection.
-        </li>
-        <li>
-          <strong>System Profiling &amp; Performance Optimization</strong>: Identified and resolved bottlenecks in distributed training, including GPU underutilization, memory pressure, and synchronization overhead, improving throughput, stability, and training efficiency.
-        </li>
-        <li>
-          <strong>Evaluation &amp; Model Selection</strong>: Built a unified evaluation workflow integrating LM Harness and LongBench to support consistent checkpoint comparison across quality, latency, and system trade-offs.
-        </li>
-        <li>
-          <strong>Production Retrieval System</strong>: Designed a FAISS-based ANN retrieval system over 500K+ documents and 1.7M passages, reducing end-to-end latency by more than 5× while improving ranking quality.
-        </li>
-      </ul>
-
-      <div class="project-highlight" style="margin-top: 22px;">
-        <h3>CineSeek: Semantic Movie Retrieval</h3>
-        <p>
-          A retrieval-first semantic movie search system combining query rewriting, FAISS-based ANN retrieval, and optional LLM-based reranking and explanation for interactive natural-language search.
-        </p>
-        <div class="project-actions">
-          <a class="primary-link" href="/cineseek" target="_blank" rel="noopener">Live Demo</a>
-          <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source</a>
-        </div>
+      <img class="hero-image" src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
+      <div class="links">
+        <a href="https://www.linkedin.com/in/mjyin/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/maxwellyin" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="mailto:maxwellyin@icloud.com">Email</a>
       </div>
-    </section>
+    </header>
 
-    <section>
-      <h2>Focus Areas</h2>
-      <ul>
-        <li><strong>LLM Systems &amp; Training</strong>: large-scale pretraining, distributed training, system profiling, and training stability</li>
-        <li><strong>Inference &amp; Deployment</strong>: deployment-aware optimization, latency/memory trade-offs, batching, KV cache, and scalable serving</li>
-        <li><strong>Retrieval &amp; RAG Systems</strong>: ANN search, embedding systems, FAISS-based retrieval, and production-oriented serving</li>
-        <li><strong>Evaluation &amp; Model Selection</strong>: benchmark design, controlled experimentation, reproducibility, and quality/latency/cost trade-off analysis</li>
-        <li><strong>Tooling</strong>: PyTorch, HuggingFace Transformers, DeepSpeed, vLLM, FAISS, FastAPI, SQL, Docker, SLURM</li>
-      </ul>
-    </section>
+    <main>
+      <section>
+        <h2>About</h2>
+        <p class="lead">
+          I am a Machine Learning Engineer with a Ph.D. in NLP, based in Toronto, Canada. My work centers on building scalable ML systems that connect modeling, system performance, and real-world deployment.
+        </p>
+        <p>
+          I specialize in large-scale Transformer training, distributed systems, retrieval infrastructure, and deployment-aware evaluation. My goal is to build production-oriented LLM systems where model quality and system efficiency are optimized together.
+        </p>
+      </section>
 
-    <section>
-      <h2>Selected Publications</h2>
-      <ul>
-        <li>
-          <strong>TACL 2024</strong>:
-          <em>Source-Free Domain Adaptation for Question Answering with Masked Self-training</em>
-        </li>
-        <li>
-          <strong>NAACL Findings 2024</strong>:
-          <em>Source-Free Unsupervised Domain Adaptation for Question Answering via Prompt-Assisted Self-learning</em>
-        </li>
-        <li>
-          <strong>AAAI 2025</strong>:
-          <em>MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</em>
-        </li>
-        <li>
-          <strong>Expert Systems with Applications 2024</strong>:
-          <em>A Fast Local Citation Recommendation Algorithm Scalable to Multi-topics</em>
-        </li>
-        <li>
-          Full publication list on
-          <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
-        </li>
-      </ul>
-    </section>
+      <section>
+        <h2>Experience</h2>
+        <div class="experience-list">
+          <div class="experience-item">
+            <h3>Huawei Noah’s Ark Lab — Machine Learning Engineer</h3>
+            <div class="experience-meta">Toronto, ON · 2025 – 2026</div>
+            <p>
+              Led development and optimization of large-scale LLM training and evaluation pipelines, including a 400M-parameter Transformer trained on 40B tokens across 8×H100 GPUs.
+            </p>
+            <p>
+              Focused on distributed training, system profiling, and training stability, improving reproducibility, sustained multi-GPU efficiency, and deployment-aware model evaluation.
+            </p>
+          </div>
 
-    <section>
-      <h2>Contact</h2>
-      <p>
-        Email: <a href="mailto:maxwellyin@icloud.com">maxwellyin@icloud.com</a><br />
-        Location: Toronto, ON, Canada
-      </p>
-    </section>
-  </main>
+          <div class="experience-item">
+            <h3>Western University — Graduate Research Assistant</h3>
+            <div class="experience-meta">London, ON · 2021 – 2025</div>
+            <p>
+              Built production-scale semantic retrieval systems over 500K+ documents and 1.7M passages, replacing expensive reranking pipelines with FAISS-based ANN retrieval in a unified embedding space.
+            </p>
+            <p>
+              Combined research and engineering across retrieval, efficiency, and system design, improving end-to-end latency by more than 5× while strengthening result quality and scalability.
+            </p>
+          </div>
+        </div>
+      </section>
 
-  <footer>
-    © Maxwell J. Yin
-  </footer>
+      <section>
+        <h2>Featured Project</h2>
+        <div class="project-card">
+          <h3>CineSeek: Semantic Movie Retrieval</h3>
+          <p>
+            CineSeek is a retrieval-first semantic movie search system designed for interactive natural-language search. It combines query rewriting, FAISS-based ANN retrieval, and optional LLM-based reranking and explanation.
+          </p>
+          <p>
+            The project reflects how I approach production ML systems: fast retrieval as the backbone, LLM components used selectively where they add the most value, and deployment decisions guided by latency, cost, and reliability trade-offs.
+          </p>
+          <div class="project-actions">
+            <a class="primary-link" href="/cineseek" target="_blank" rel="noopener">Live Demo</a>
+            <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Technical Focus</h2>
+        <div class="tag-row">
+          <span class="tag">LLM Systems</span>
+          <span class="tag">Distributed Training</span>
+          <span class="tag">Inference Optimization</span>
+          <span class="tag">Retrieval &amp; RAG</span>
+          <span class="tag">FAISS</span>
+          <span class="tag">Evaluation</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">DeepSpeed</span>
+          <span class="tag">vLLM</span>
+          <span class="tag">FastAPI</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Research & Publications</h2>
+        <p class="publication-note">
+          First-author publications in TACL, NAACL Findings, AAAI, and Expert Systems with Applications.
+        </p>
+        <ul>
+          <li>
+            <strong>TACL 2024</strong>:
+            <em>Source-Free Domain Adaptation for Question Answering with Masked Self-training</em>
+          </li>
+          <li>
+            <strong>NAACL Findings 2024</strong>:
+            <em>Source-Free Unsupervised Domain Adaptation for Question Answering via Prompt-Assisted Self-learning</em>
+          </li>
+          <li>
+            <strong>AAAI 2025</strong>:
+            <em>MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</em>
+          </li>
+          <li>
+            <strong>Expert Systems with Applications 2024</strong>:
+            <em>A Fast Local Citation Recommendation Algorithm Scalable to Multi-topics</em>
+          </li>
+          <li>
+            Full list available on
+            <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          <strong>Email:</strong> <a href="mailto:maxwellyin@icloud.com">maxwellyin@icloud.com</a><br />
+          <strong>Location:</strong> Toronto, ON, Canada
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © Maxwell J. Yin
+    </footer>
+  </div>
 </body>
 </html>
