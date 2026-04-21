@@ -273,6 +273,53 @@
       transform: translateY(-1px);
     }
 
+    .study-section {
+      margin-top: 24px;
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      color: #334155;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .study-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      padding: 24px 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .study-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+
+    .study-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .study-card .tag-row {
+      margin: 0;
+      padding-top: 4px;
+    }
+
+    .study-actions {
+      display: flex;
+      justify-content: flex-end;
+      min-width: 150px;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -288,6 +335,15 @@
 
       .project-grid {
         grid-template-columns: 1fr;
+      }
+
+      .study-card {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .study-actions {
+        justify-content: flex-start;
       }
 
       .intro-card,
@@ -382,6 +438,28 @@
           <div class="project-actions">
             <a class="primary-link" href="https://github.com/maxwellyin/cineseek-multimodal" target="_blank" rel="noopener">Source Code</a>
           </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="study-section" aria-label="Technical studies">
+      <p class="section-label">Technical Study</p>
+      <article class="study-card">
+        <div>
+          <h2>CineSeek-Adapters</h2>
+          <p>
+            A PyTorch ablation study on lightweight retrieval adaptation for CineSeek, comparing frozen embeddings, linear adapters, residual MLP adapters, and concat-based item fusion under full-catalog contrastive training.
+          </p>
+          <div class="tag-row">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Retrieval</span>
+            <span class="tag">Contrastive Learning</span>
+            <span class="tag">Ablation Study</span>
+            <span class="tag">Embedding Adaptation</span>
+          </div>
+        </div>
+        <div class="study-actions project-actions">
+          <a class="primary-link" href="https://github.com/maxwellyin/cineseek-adapters" target="_blank" rel="noopener">Source Code</a>
         </div>
       </article>
     </section>
