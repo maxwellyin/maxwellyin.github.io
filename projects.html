@@ -22,6 +22,7 @@
       --soft: #eff6ff;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       --max-width: 1040px;
+      --content-inset: 28px;
     }
 
     * {
@@ -52,12 +53,13 @@
     header {
       background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
       color: white;
-      padding: 42px 20px 36px;
+      padding: 42px 0 36px;
     }
 
     .header-inner {
-      max-width: var(--max-width);
+      max-width: calc(var(--max-width) + 32px);
       margin: 0 auto;
+      padding: 0 calc(16px + var(--content-inset));
     }
 
     .top-nav {
@@ -97,22 +99,22 @@
     }
 
     h1 {
-      max-width: 760px;
+      max-width: 1040px;
       margin: 0;
-      font-size: clamp(2.25rem, 5vw, 4.1rem);
+      font-size: clamp(2.25rem, 4.7vw, 4.1rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
     .subtitle {
-      max-width: 780px;
+      max-width: 1040px;
       margin: 16px 0 0;
       color: #d1d5db;
       font-size: 1.08rem;
     }
 
     main {
-      max-width: var(--max-width);
+      max-width: calc(var(--max-width) + 32px);
       margin: 0 auto;
       padding: 30px 16px 54px;
     }
@@ -290,6 +292,10 @@
       .intro-card,
       .project-body {
         padding: 20px;
+      }
+
+      .header-inner {
+        padding: 0 20px;
       }
     }
   </style>
