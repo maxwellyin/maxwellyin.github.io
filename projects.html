@@ -197,7 +197,9 @@
     }
 
     .project-body {
+      display: flex;
       flex: 1;
+      flex-direction: column;
       padding: 24px;
     }
 
@@ -213,7 +215,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-      margin: 18px 0 20px;
+      margin: auto 0 20px;
+      padding-top: 18px;
     }
 
     .tag {
@@ -230,7 +233,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: auto;
+      margin-top: 0;
     }
 
     .project-actions a {
@@ -313,7 +316,7 @@
   <main>
     <section class="intro-card">
       <p>
-        These projects share one theme: turning embedding models, retrieval systems, and LLM components into working software. CineSeek is the product demo; CineSeek-MM is the technical extension focused on multimodal retrieval, evaluation, and PyTorch-based experimentation.
+        These projects focus on end-to-end ML system design, from embedding models and retrieval pipelines to LLM-based agent components and production-style serving. CineSeek is the product-facing demo; CineSeek-MM is the technical extension focused on multimodal retrieval, evaluation, and PyTorch-based experimentation.
       </p>
     </section>
 
@@ -325,10 +328,13 @@
         </div>
         <div class="project-body">
           <p>
-            <strong>Agent-enhanced semantic movie search</strong> for natural-language recommendation queries.
+            <strong>Semantic retrieval system with LLM agent orchestration</strong> for natural-language movie search.
           </p>
           <p class="muted">
-            CineSeek combines raw sentence-transformer embeddings, FAISS ANN retrieval, and an optional LLM agent for query refinement, reranking, and explanation. The project is designed as a deployed, interactive web demo with a production-style serving path.
+            CineSeek is a production-style retrieval system combining dense embeddings, FAISS ANN indexing, and an LLM-based agent for query rewriting, reranking, and result explanation.
+          </p>
+          <p class="muted">
+            The agent is integrated into the retrieval pipeline to improve robustness for complex natural-language queries, enabling better handling of ambiguity, intent refinement, and long-tail search scenarios under latency constraints.
           </p>
           <div class="tag-row">
             <span class="tag">Semantic Search</span>
@@ -351,10 +357,13 @@
         </div>
         <div class="project-body">
           <p>
-            <strong>Multimodal movie retrieval</strong> extending text-only semantic search to poster and hybrid query settings.
+            <strong>CLIP-based multimodal retrieval system</strong> for text, poster, and hybrid movie search.
           </p>
           <p class="muted">
-            CineSeek-MM uses CLIP-style text-image embeddings, poster representations, FAISS indexing, and offline evaluation to compare text-only, image-only, and multimodal retrieval behavior. It is structured as a technical ML project rather than a hosted product demo.
+            Implements a CLIP-based dual-encoder pipeline using Vision Transformer (ViT) image features and text embeddings, with FAISS indexing and offline evaluation.
+          </p>
+          <p class="muted">
+            The project focuses on analyzing modality fusion strategies, retrieval behavior, and quality/latency tradeoffs across text-only, image-only, and hybrid queries.
           </p>
           <div class="tag-row">
             <span class="tag">Multimodal Retrieval</span>
