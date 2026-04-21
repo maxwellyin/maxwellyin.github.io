@@ -8,7 +8,7 @@
   <title>Projects - Maxwell J. Yin</title>
   <meta
     name="description"
-    content="Portfolio projects by Maxwell J. Yin, including CineSeek semantic movie search and CineSeek-MM multimodal retrieval."
+    content="Portfolio projects by Maxwell J. Yin, including CineSeek semantic movie search, retrieval adaptation, and CineSeek-MM multimodal retrieval."
   />
   <style>
     :root {
@@ -142,22 +142,25 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 22px;
     }
 
     .project-card {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
       overflow: hidden;
     }
 
     .project-banner {
-      min-height: 150px;
+      min-height: 100%;
       padding: 24px;
       color: white;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .project-banner::after {
@@ -179,6 +182,10 @@
       background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 50%, #14b8a6 100%);
     }
 
+    .banner-adapters {
+      background: linear-gradient(135deg, #1e293b 0%, #64748b 48%, #22c55e 100%);
+    }
+
     .project-kicker {
       position: relative;
       z-index: 1;
@@ -194,9 +201,9 @@
       position: relative;
       z-index: 1;
       margin: 0;
-      font-size: 1.65rem;
+      font-size: clamp(1.75rem, 2.8vw, 2.45rem);
       line-height: 1.18;
-      max-width: 12ch;
+      max-width: 11ch;
     }
 
     .project-body {
@@ -218,8 +225,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-      margin: auto 0 20px;
-      padding-top: 18px;
+      margin: 4px 0 20px;
+      padding-top: 8px;
     }
 
     .tag {
@@ -273,53 +280,6 @@
       transform: translateY(-1px);
     }
 
-    .study-section {
-      margin-top: 24px;
-    }
-
-    .section-label {
-      margin: 0 0 12px;
-      color: #334155;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .study-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 22px;
-      align-items: center;
-      padding: 24px 28px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .study-card h2 {
-      margin: 0 0 8px;
-      font-size: 1.35rem;
-      line-height: 1.25;
-    }
-
-    .study-card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-    }
-
-    .study-card .tag-row {
-      margin: 0;
-      padding-top: 4px;
-    }
-
-    .study-actions {
-      display: flex;
-      justify-content: flex-end;
-      min-width: 150px;
-    }
-
     footer {
       text-align: center;
       color: var(--muted);
@@ -337,13 +297,12 @@
         grid-template-columns: 1fr;
       }
 
-      .study-card {
+      .project-card {
         grid-template-columns: 1fr;
-        padding: 20px;
       }
 
-      .study-actions {
-        justify-content: flex-start;
+      .project-banner {
+        min-height: 150px;
       }
 
       .intro-card,
@@ -379,7 +338,7 @@
   <main>
     <section class="intro-card">
       <p>
-        These projects focus on end-to-end ML system design, from embedding models and retrieval pipelines to LLM-based agent components and production-style serving. CineSeek is the product-facing demo; CineSeek-MM is the technical extension focused on multimodal retrieval, evaluation, and PyTorch-based experimentation.
+        These projects focus on end-to-end ML system design, from embedding models and retrieval pipelines to LLM-based agent components and production-style serving. CineSeek is the product-facing retrieval demo, CineSeek-Adapters explores lightweight retrieval adaptation under small-data constraints, and CineSeek-MM extends the stack to multimodal text-image retrieval and evaluation.
       </p>
     </section>
 
@@ -391,7 +350,7 @@
         </div>
         <div class="project-body">
           <p>
-            <strong>Semantic retrieval system with LLM agent orchestration</strong> for natural-language movie search.
+            <strong>Production-style semantic retrieval system with LLM agent orchestration</strong> for natural-language movie search.
           </p>
           <p class="muted">
             CineSeek is a production-style retrieval system combining dense embeddings, FAISS ANN indexing, and an LLM-based agent for query rewriting, reranking, and result explanation.
@@ -414,8 +373,36 @@
       </article>
 
       <article class="project-card">
+        <div class="project-banner banner-adapters">
+          <div class="project-kicker">Research Project</div>
+          <h2>CineSeek-Adapters</h2>
+        </div>
+        <div class="project-body">
+          <p>
+            <strong>Lightweight retrieval adaptation project</strong> for improving a strong frozen sentence-transformer baseline under a realistic small-data setting.
+          </p>
+          <p class="muted">
+            Compares linear adapters, residual MLP adapters, and concat-based item fusion under full-catalog contrastive training, with evaluation across recall, MRR, NDCG, parameter count, and retrieval latency.
+          </p>
+          <p class="muted">
+            The main finding is that preserving title and overview as structured item-side signals can outperform deeper nonlinear adapters, suggesting that representation structure matters more than extra capacity in this setting.
+          </p>
+          <div class="tag-row">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Retrieval</span>
+            <span class="tag">Contrastive Learning</span>
+            <span class="tag">Ablation Study</span>
+            <span class="tag">Embedding Adaptation</span>
+          </div>
+          <div class="project-actions">
+            <a class="primary-link" href="https://github.com/maxwellyin/cineseek-adapters" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
         <div class="project-banner banner-mm">
-          <div class="project-kicker">Technical System</div>
+          <div class="project-kicker">Multimodal System</div>
           <h2>CineSeek-MM</h2>
         </div>
         <div class="project-body">
@@ -426,7 +413,7 @@
             Implements a CLIP-based dual-encoder pipeline using Vision Transformer (ViT) image features and text embeddings, with FAISS indexing and offline evaluation.
           </p>
           <p class="muted">
-            The project focuses on analyzing modality fusion strategies, retrieval behavior, and quality/latency tradeoffs across text-only, image-only, and hybrid queries.
+            The project analyzes modality fusion strategies, retrieval behavior, and quality/latency tradeoffs across text-only, image-only, and hybrid queries in a CLIP-style embedding space.
           </p>
           <div class="tag-row">
             <span class="tag">Multimodal Retrieval</span>
@@ -438,28 +425,6 @@
           <div class="project-actions">
             <a class="primary-link" href="https://github.com/maxwellyin/cineseek-multimodal" target="_blank" rel="noopener">Source Code</a>
           </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="study-section" aria-label="Technical studies">
-      <p class="section-label">Technical Study</p>
-      <article class="study-card">
-        <div>
-          <h2>CineSeek-Adapters</h2>
-          <p>
-            A PyTorch ablation study on lightweight retrieval adaptation for CineSeek, comparing frozen embeddings, linear adapters, residual MLP adapters, and concat-based item fusion under full-catalog contrastive training.
-          </p>
-          <div class="tag-row">
-            <span class="tag">PyTorch</span>
-            <span class="tag">Retrieval</span>
-            <span class="tag">Contrastive Learning</span>
-            <span class="tag">Ablation Study</span>
-            <span class="tag">Embedding Adaptation</span>
-          </div>
-        </div>
-        <div class="study-actions project-actions">
-          <a class="primary-link" href="https://github.com/maxwellyin/cineseek-adapters" target="_blank" rel="noopener">Source Code</a>
         </div>
       </article>
     </section>
