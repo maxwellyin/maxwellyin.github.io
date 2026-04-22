@@ -283,79 +283,108 @@
     </nav>
 
     <section class="page-card">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-8">
-          <div class="eyebrow mb-3">Search Interface</div>
-          <h1 class="section-title" style="font-size:2.7rem;">Describe a movie the way a user actually would.</h1>
-          <p class="body-copy">
-            Enter a natural-language movie description, and CineSeek will retrieve relevant candidates from its semantic index.
-            By default, an optional LLM agent further refines the results through reranking and explanation.
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow mb-3">Retrieval System</div>
+          <h1 class="display-title">Search movies by meaning — not keywords.</h1>
+          <p class="lede">
+            CineSeek is a semantic movie search system that understands natural-language queries.
+            It combines embedding-based retrieval, FAISS-powered candidate search, and an optional LLM agent for reranking and explanation.
           </p>
-
-          <form class="search-form mt-4" action="http://139.84.197.229:8000/search/results" method="GET" id="search-form">
-            <label class="mini-label mb-2 d-block" for="query-box">Search query</label>
-            <textarea id="query-box" name="text" class="form-control" required>futuristic sci-fi movies with AI and robots</textarea>
-
-            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mt-3">
-              <div>
-                <label class="mini-label d-flex align-items-center gap-2">
-                  <input type="checkbox" name="use_agent" value="1" checked>
-                  Use LLM agent for reranking and explanation
-                </label>
-                <div class="mini-label mt-2">Default agent backend: <span class="mono">Groq:qwen/qwen3-32b</span></div>
-              </div>
-              <button type="submit" class="btn primary-btn" id="search-submit">Search Movies</button>
-            </div>
-
-            <div id="search-loading" class="result-card mt-3 d-none">
-              <div class="d-flex align-items-center gap-3">
-                <div class="spinner-border spinner-border-sm" style="color: var(--accent);" role="status" aria-hidden="true"></div>
-                <div>
-                  <div class="mini-label mb-1">Working</div>
-                  <div class="body-copy mb-0">Please wait while CineSeek retrieves candidates, refines the ranking, and prepares the final results.</div>
-                </div>
-              </div>
-            </div>
-          </form>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn primary-btn" href="http://139.84.197.229:8000/search">Try Search</a>
+            <a class="ghost-link align-self-center" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noreferrer">View source</a>
+          </div>
         </div>
 
-        <div class="col-lg-4">
-          <div class="accent-panel">
-            <div class="eyebrow text-white-50 mb-3">Suggested Queries</div>
-            <p class="body-copy text-white-50 mb-3">Example queries that highlight the system’s strengths:</p>
-            <div class="d-grid gap-3">
-              <a class="ghost-link text-white" href="http://139.84.197.229:8000/search/results?text=the%20time%20machine&use_agent=1">
-                <div class="mini-label text-white-50 mb-1">Exact title search</div>
-                <div class="mono text-white">the time machine</div>
-              </a>
-              <a class="ghost-link text-white" href="http://139.84.197.229:8000/search/results?text=futuristic%20sci-fi%20movies%20with%20AI%20and%20robots&use_agent=1">
-                <div class="mini-label text-white-50 mb-1">Concept search</div>
-                <div class="mono text-white">futuristic sci-fi movies with AI and robots</div>
-              </a>
-              <a class="ghost-link text-white" href="http://139.84.197.229:8000/search/results?text=superhero%20movies%20with%20DC%20or%20Marvel%20characters&use_agent=1">
-                <div class="mini-label text-white-50 mb-1">Franchise + genre</div>
-                <div class="mono text-white">superhero movies with DC or Marvel characters</div>
-              </a>
+        <div class="accent-panel">
+          <div class="eyebrow text-white-50 mb-3">System Snapshot</div>
+          <h2 class="section-title text-white">Retrieval-first architecture, with an optional LLM agent.</h2>
+          <p class="body-copy text-white-50">
+            The system keeps retrieval explicit and efficient: sentence embeddings, FAISS-based nearest neighbor search,
+            and a strong frozen embedding baseline selected through evaluation. An optional LLM agent improves ranking and adds explanations,
+            without replacing the underlying retrieval pipeline.
+          </p>
+          <div class="metric-grid mt-4">
+            <div class="metric-card">
+              <div class="metric-value">MSRD</div>
+              <div class="metric-label">Real query-to-movie relevance labels</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">FAISS</div>
+              <div class="metric-label">ANN retrieval for low-latency search</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">Agent</div>
+              <div class="metric-label">LLM-powered reranking, query rewriting, and explanation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row g-4 mt-1">
+      <div class="col-lg-7">
+        <div class="page-card h-100">
+          <div class="eyebrow mb-3">What It Does</div>
+          <h2 class="section-title">Discover movies from natural-language descriptions.</h2>
+          <p class="body-copy mt-3 mb-0">
+            CineSeek is built for real, fuzzy movie queries — not just exact title matches.
+            It connects natural-language intent to relevant results through semantic retrieval and optional agent-based refinement.
+          </p>
+
+          <div class="feature-grid mt-4">
+            <div class="feature-card">
+              <h3 class="h5">Semantic Search</h3>
+              <p class="feature-copy mb-0">
+                Queries and movies are mapped into a shared embedding space, so the system can retrieve relevant titles beyond exact keyword overlap.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">Fast Retrieval</h3>
+              <p class="feature-copy mb-0">
+                FAISS provides low-latency nearest neighbor search, making the retrieval layer fast enough for interactive search experiences.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">Agent Refinement</h3>
+              <p class="feature-copy mb-0">
+                An optional LLM agent can refine vague queries, rerank retrieved candidates, and generate short explanations for the final results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="page-card h-100">
+          <div class="eyebrow mb-3">Live System</div>
+          <h2 class="section-title">What happens after you submit a query</h2>
+
+          <div class="feature-grid mt-4" style="grid-template-columns: 1fr;">
+            <div class="feature-card">
+              <h3 class="h5">1. Retrieve</h3>
+              <p class="feature-copy mb-0">
+                The query is embedded and matched against a FAISS index built from movie representations.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">2. Rerank</h3>
+              <p class="feature-copy mb-0">
+                An LLM agent reorders the top candidates and helps resolve vague, broad, or ambiguous descriptions.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="h5">3. Explain</h3>
+              <p class="feature-copy mb-0">
+                The system returns short explanations so the final recommendations feel more transparent and easier to inspect.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
   </div>
-  <script>
-    (function () {
-      const form = document.getElementById("search-form");
-      const submitButton = document.getElementById("search-submit");
-      const loadingCard = document.getElementById("search-loading");
-      if (!form || !submitButton || !loadingCard) return;
-
-      form.addEventListener("submit", function () {
-        submitButton.disabled = true;
-        submitButton.textContent = "Searching...";
-        loadingCard.classList.remove("d-none");
-      });
-    })();
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
