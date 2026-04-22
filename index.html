@@ -264,6 +264,20 @@
       font-size: 0.95rem;
     }
 
+    #fun-stuff {
+      color: var(--muted);
+      font-size: 0.85rem;
+      opacity: 0.6;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    #fun-stuff:hover {
+      color: var(--accent);
+      opacity: 1;
+      text-decoration: underline;
+    }
+
     @media (max-width: 640px) {
       header {
         padding-top: 46px;
@@ -416,7 +430,7 @@
     </main>
 
     <footer>
-      © Maxwell J. Yin
+      © Maxwell J. Yin · <a id="fun-stuff" href="/games/snake/">Fun stuff 👀</a>
     </footer>
   </div>
 </body>

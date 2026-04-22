@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake - Maxwell J. Yin</title>
+  <meta
+    name="description"
+    content="Snake game."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-card" aria-label="Snake game">
+      <div class="game-header">
+        <div>
+          <p class="eyebrow">Hidden Game</p>
+          <h1>Snake</h1>
+          <p class="hint">Arrow keys to play. Swipe works on touch screens.</p>
+        </div>
+        <a class="home-link" href="/">Back home</a>
+      </div>
+
+      <div class="score-row" aria-live="polite">
+        <div>
+          <span class="score-label">Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div>
+          <span class="score-label">Best</span>
+          <strong id="best-score">0</strong>
+        </div>
+        <button id="auto-button" type="button" aria-pressed="false">Auto</button>
+        <button id="restart-button" type="button">Restart</button>
+      </div>
+
+      <canvas id="game-board" width="480" height="480" aria-label="Snake board"></canvas>
+
+      <p id="status" class="status">Press an arrow key to start.</p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
