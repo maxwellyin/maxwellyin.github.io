@@ -237,19 +237,10 @@
     }
   </style>
 </head>
-<body>
+<body data-page="resume">
   <header>
     <div class="header-inner">
-      <nav class="top-nav" aria-label="Primary navigation">
-        <a class="brand" href="/">Maxwell J. Yin</a>
-        <div class="nav-links">
-          <a href="/">Home</a>
-          <a href="/projects">Projects</a>
-          <a class="active" href="/resume">Resume</a>
-          <a href="https://github.com/maxwellyin" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/mjyin/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </nav>
+      <nav class="top-nav" aria-label="Primary navigation" data-site-shell="subpage-nav"></nav>
       <h1>Resume preview and download.</h1>
       <p class="subtitle">
         A browser-friendly preview of my current resume, with a direct PDF download.
@@ -281,8 +272,7 @@
     </section>
   </main>
 
-  <footer>
-    © Maxwell J. Yin · <a id="fun-stuff" href="/games/snake/">Fun stuff 👀</a>
-  </footer>
+  <footer data-site-shell="footer"></footer>
+  <script src="/assets/site-shell.js"></script>
 </body>
 </html>
