@@ -205,25 +205,18 @@
       backdrop-filter: blur(8px);
     }
 
-    .project-preview h2 {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      font-size: clamp(1.75rem, 2.8vw, 2.45rem);
-      line-height: 1.18;
-      max-width: 11ch;
-      color: white;
-      text-shadow: 0 4px 24px rgba(15, 23, 42, 0.55);
-    }
-
     .project-body {
       display: flex;
       flex: 1;
       flex-direction: column;
       padding: 24px;
+    }
+
+    .project-title {
+      margin: 0 0 12px;
+      font-size: clamp(1.7rem, 2.7vw, 2.25rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
     }
 
     .project-body p {
@@ -366,9 +359,9 @@
         <div class="project-preview preview-cineseek">
           <img src="/project-previews/cineseek-search.png" alt="CineSeek semantic movie search demo screenshot" />
           <div class="project-preview-label">Product System</div>
-          <h2>CineSeek</h2>
         </div>
         <div class="project-body">
+          <h2 class="project-title">CineSeek</h2>
           <p>
             <strong>Production-style semantic retrieval system with LLM agent orchestration</strong> for natural-language movie search.
           </p>
@@ -396,9 +389,9 @@
         <div class="project-preview preview-adapters">
           <img src="/project-previews/cineseek-adapters.svg" alt="CineSeek-Adapters training and evaluation diagram" />
           <div class="project-preview-label">Research Project</div>
-          <h2>CineSeek-Adapters</h2>
         </div>
         <div class="project-body">
+          <h2 class="project-title">CineSeek-Adapters</h2>
           <p>
             <strong>Lightweight retrieval adaptation project</strong> for improving a strong frozen sentence-transformer baseline under a realistic small-data setting.
           </p>
@@ -425,9 +418,9 @@
         <div class="project-preview preview-mm">
           <img src="/project-previews/cineseek-mm-demo-results.png" alt="CineSeek-MM multimodal retrieval demo results screenshot" />
           <div class="project-preview-label">Multimodal System</div>
-          <h2>CineSeek-MM</h2>
         </div>
         <div class="project-body">
+          <h2 class="project-title">CineSeek-MM</h2>
           <p>
             <strong>CLIP-based multimodal retrieval system</strong> for text, poster, and hybrid movie search.
           </p>
