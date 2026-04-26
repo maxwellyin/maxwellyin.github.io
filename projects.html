@@ -147,23 +147,16 @@
     }
 
     .project-card {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
       overflow: hidden;
     }
 
-    .project-banner {
-      min-height: 100%;
-      padding: 24px;
-      color: white;
+    .project-preview {
       position: relative;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
-    .project-banner::after {
+    .project-preview::after {
       content: "";
       position: absolute;
       right: -72px;
@@ -174,36 +167,56 @@
       background: rgba(255, 255, 255, 0.14);
     }
 
-    .banner-cineseek {
+    .preview-cineseek {
       background: linear-gradient(135deg, #7c2d12 0%, #c65d2e 52%, #f1b24c 100%);
     }
 
-    .banner-mm {
+    .preview-mm {
       background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 50%, #14b8a6 100%);
     }
 
-    .banner-adapters {
+    .preview-adapters {
       background: linear-gradient(135deg, #1e293b 0%, #64748b 48%, #22c55e 100%);
     }
 
-    .project-kicker {
+    .project-preview img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .project-preview-label {
       position: relative;
       z-index: 1;
-      margin-bottom: 8px;
+      position: absolute;
+      top: 18px;
+      left: 18px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       font-size: 0.72rem;
       font-weight: 800;
-      opacity: 0.82;
+      opacity: 0.92;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.42);
+      backdrop-filter: blur(8px);
     }
 
-    .project-banner h2 {
+    .project-preview h2 {
       position: relative;
       z-index: 1;
       margin: 0;
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
       font-size: clamp(1.75rem, 2.8vw, 2.45rem);
       line-height: 1.18;
       max-width: 11ch;
+      color: white;
+      text-shadow: 0 4px 24px rgba(15, 23, 42, 0.55);
     }
 
     .project-body {
@@ -311,14 +324,6 @@
         grid-template-columns: 1fr;
       }
 
-      .project-card {
-        grid-template-columns: 1fr;
-      }
-
-      .project-banner {
-        min-height: 150px;
-      }
-
       .intro-card,
       .project-body {
         padding: 20px;
@@ -358,8 +363,9 @@
 
     <section class="project-grid" aria-label="Project list">
       <article class="project-card">
-        <div class="project-banner banner-cineseek">
-          <div class="project-kicker">Product System</div>
+        <div class="project-preview preview-cineseek">
+          <img src="/project-previews/cineseek-search.png" alt="CineSeek semantic movie search demo screenshot" />
+          <div class="project-preview-label">Product System</div>
           <h2>CineSeek</h2>
         </div>
         <div class="project-body">
@@ -387,8 +393,9 @@
       </article>
 
       <article class="project-card">
-        <div class="project-banner banner-adapters">
-          <div class="project-kicker">Research Project</div>
+        <div class="project-preview preview-adapters">
+          <img src="/project-previews/cineseek-adapters.svg" alt="CineSeek-Adapters training and evaluation diagram" />
+          <div class="project-preview-label">Research Project</div>
           <h2>CineSeek-Adapters</h2>
         </div>
         <div class="project-body">
@@ -415,8 +422,9 @@
       </article>
 
       <article class="project-card">
-        <div class="project-banner banner-mm">
-          <div class="project-kicker">Multimodal System</div>
+        <div class="project-preview preview-mm">
+          <img src="/project-previews/cineseek-mm-demo-results.png" alt="CineSeek-MM multimodal retrieval demo results screenshot" />
+          <div class="project-preview-label">Multimodal System</div>
           <h2>CineSeek-MM</h2>
         </div>
         <div class="project-body">

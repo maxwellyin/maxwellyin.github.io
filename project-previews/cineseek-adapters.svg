@@ -1,0 +1,41 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="36" fill="url(#bg)"/>
+  <rect x="52" y="56" width="1096" height="608" rx="28" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)"/>
+
+  <text x="84" y="128" fill="white" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="3">CINESEEK-ADAPTERS</text>
+  <text x="84" y="176" fill="#D8E4F5" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800">Frozen Retrieval Embeddings</text>
+  <text x="84" y="232" fill="#B8C5D8" font-family="Inter, Arial, sans-serif" font-size="30">Lightweight adaptation under small-data constraints</text>
+
+  <rect x="84" y="302" width="282" height="184" rx="24" fill="#0F172A" fill-opacity="0.88"/>
+  <text x="112" y="354" fill="#A5B4FC" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Inputs</text>
+  <text x="112" y="402" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Query</text>
+  <text x="112" y="446" fill="#D8E4F5" font-family="Inter, Arial, sans-serif" font-size="28">Title + Overview</text>
+
+  <rect x="460" y="274" width="282" height="240" rx="24" fill="#1E293B" fill-opacity="0.92"/>
+  <text x="488" y="326" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Adapters</text>
+  <text x="488" y="376" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Linear</text>
+  <text x="488" y="418" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Residual MLP</text>
+  <text x="488" y="460" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Concat Fusion</text>
+
+  <rect x="836" y="302" width="280" height="184" rx="24" fill="#14532D" fill-opacity="0.92"/>
+  <text x="864" y="354" fill="#86EFAC" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Evaluation</text>
+  <text x="864" y="404" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Recall / MRR</text>
+  <text x="864" y="446" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="28">Latency + Params</text>
+
+  <path d="M378 394H444" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <path d="M730 394H796" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <path d="M428 374L456 394L428 414" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M780 374L808 394L780 414" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="84" y="534" width="1032" height="104" rx="18" fill="rgba(255,255,255,0.08)"/>
+  <text x="114" y="584" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Key finding: structure-aware item fusion can outperform</text>
+  <text x="114" y="620" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">deeper nonlinear adapters in this small-data setting.</text>
+
+  <defs>
+    <linearGradient id="bg" x1="54" y1="52" x2="1144" y2="664" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.52" stop-color="#334155"/>
+      <stop offset="1" stop-color="#16A34A"/>
+    </linearGradient>
+  </defs>
+</svg>
