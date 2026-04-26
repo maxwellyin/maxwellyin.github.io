@@ -106,10 +106,7 @@
     }
 
     .subtitle {
-      max-width: 760px;
-      margin: 16px 0 0;
-      color: #d1d5db;
-      font-size: 1.08rem;
+      display: none;
     }
 
     main {
@@ -131,17 +128,10 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .resume-intro p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.02rem;
-    }
-
     .resume-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 18px;
     }
 
     .resume-actions a {
@@ -187,13 +177,6 @@
       background: #f3f4f6;
     }
 
-    .resume-fallback {
-      padding: 18px 28px 24px;
-      color: var(--muted);
-      font-size: 0.96rem;
-      border-top: 1px solid var(--border);
-    }
-
     footer {
       text-align: center;
       color: var(--muted);
@@ -225,8 +208,7 @@
         padding: 0 20px;
       }
 
-      .resume-intro,
-      .resume-fallback {
+      .resume-intro {
         padding-left: 20px;
         padding-right: 20px;
       }
@@ -242,18 +224,12 @@
     <div class="header-inner">
       <nav class="top-nav" aria-label="Primary navigation" data-site-shell="subpage-nav"></nav>
       <h1>Resume preview and download</h1>
-      <p class="subtitle">
-        A concise view of my experience across LLM systems, retrieval, distributed training, and production ML.
-      </p>
     </div>
   </header>
 
   <main>
     <section class="resume-card">
       <div class="resume-intro">
-        <p>
-          This page provides an embedded preview of my latest resume. If the PDF preview does not render correctly on your browser or device, use the download link below.
-        </p>
         <div class="resume-actions">
           <a class="primary-link" href="/assets/Maxwell_Yin_Resume.pdf" target="_blank" rel="noopener">Open PDF</a>
           <a class="secondary-link" href="/assets/Maxwell_Yin_Resume.pdf" download>Download PDF</a>
@@ -265,10 +241,6 @@
         src="/assets/Maxwell_Yin_Resume.pdf"
         title="Resume preview for Maxwell J. Yin"
       ></iframe>
-
-      <div class="resume-fallback">
-        If your browser blocks embedded PDFs, open the file in a new tab or download it directly using the buttons above.
-      </div>
     </section>
   </main>
 
