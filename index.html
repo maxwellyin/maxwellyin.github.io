@@ -192,6 +192,38 @@
       margin-bottom: 0;
     }
 
+    .notes-card {
+      border: 1px solid #e3eaf5;
+      border-radius: 18px;
+      padding: 22px 24px;
+      background: linear-gradient(180deg, #fbfdff 0%, #f8fbff 100%);
+    }
+
+    .notes-card p {
+      margin-bottom: 0;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .notes-actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .notes-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
     .project-actions {
       margin-top: 18px;
       display: flex;
@@ -370,6 +402,18 @@
             <a class="primary-link" href="https://cineseek.maxwellyin.com" target="_blank" rel="noopener">Live Demo</a>
             <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
             <a class="secondary-link" href="/projects">All Projects</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Technical Blog &amp; Research Notes</h2>
+        <div class="notes-card">
+          <p>
+            Reproduction reports and architecture analyses on recursive reasoning, long-context modeling, visual token compression, hybrid attention, MoE, and diffusion LLMs.
+          </p>
+          <div class="notes-actions">
+            <a class="secondary-link" href="/field-notes/">Read Notes</a>
           </div>
         </div>
       </section>
