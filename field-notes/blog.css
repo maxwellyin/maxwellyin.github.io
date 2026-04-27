@@ -1,4 +1,4 @@
-@import url("../assets/site-theme.css?v=20260427-1");
+@import url("../assets/site-theme.css?v=20260427-4");
 
 :root {
   --bg: #f4f6fb;
@@ -41,12 +41,6 @@ a:hover {
   text-decoration: underline;
 }
 
-header {
-  color: white;
-  background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .header-inner,
 .page-shell,
 .footer-inner {
@@ -54,48 +48,6 @@ header {
   margin: 0 auto;
   padding-left: 16px;
   padding-right: 16px;
-}
-
-.header-inner {
-  padding-top: 38px;
-  padding-bottom: 38px;
-}
-
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
-
-.brand {
-  color: white;
-  font-weight: 760;
-  letter-spacing: 0.2px;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.nav-links a {
-  color: #dbeafe;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  padding: 7px 13px;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.26);
-  text-decoration: none;
 }
 
 .eyebrow {
@@ -111,21 +63,6 @@ header {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.hero-title {
-  margin: 0;
-  max-width: 900px;
-  font-size: clamp(2.7rem, 5.8vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
-}
-
-.hero-subtitle {
-  max-width: 760px;
-  margin: 16px 0 0;
-  color: rgba(229, 255, 251, 0.86);
-  font-size: 1.07rem;
 }
 
 .hero-meta {
@@ -505,15 +442,9 @@ header {
 }
 
 @media (max-width: 720px) {
-  .header-inner {
-    padding-top: 34px;
-    padding-bottom: 34px;
-  }
+  
 
-  .top-nav {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+  
 
   .article-card,
   .index-body,
