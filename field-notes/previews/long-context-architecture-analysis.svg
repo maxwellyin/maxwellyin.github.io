@@ -1,62 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
   <title id="title">Long-context architecture analysis cover</title>
-  <desc id="desc">Abstract cover with network nodes, layered architecture blocks, and long-context motif.</desc>
+  <desc id="desc">Portrait cover with stacked system panels and long-context network lines.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="55%" stop-color="#123b49"/>
-      <stop offset="100%" stop-color="#1d4f63"/>
+      <stop offset="52%" stop-color="#123b49"/>
+      <stop offset="100%" stop-color="#1f5f6b"/>
     </linearGradient>
-    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#67e8f9"/>
-      <stop offset="55%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
       <stop offset="100%" stop-color="#f59e0b"/>
-    </linearGradient>
-    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#e2e8f0" stop-opacity="0.05"/>
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="900" fill="url(#bg)"/>
-  <circle cx="1010" cy="132" r="196" fill="#22d3ee" opacity="0.14"/>
-  <circle cx="144" cy="780" r="210" fill="#38bdf8" opacity="0.12"/>
-  <path d="M94 202C226 118 375 94 526 118c195 31 337 142 574 92" fill="none" stroke="url(#glow)" stroke-opacity="0.38" stroke-width="3"/>
-  <path d="M88 262c188 66 331 70 500 29 182-45 303-25 523 40" fill="none" stroke="#7dd3fc" stroke-opacity="0.18" stroke-width="2"/>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="744" cy="160" r="188" fill="#22d3ee" opacity="0.12"/>
+  <circle cx="148" cy="1034" r="210" fill="#38bdf8" opacity="0.1"/>
 
-  <g opacity="0.94">
-    <rect x="92" y="92" width="1016" height="716" rx="34" fill="url(#panel)" stroke="#cbd5e1" stroke-opacity="0.18"/>
-    <rect x="144" y="152" width="910" height="188" rx="26" fill="#0f172a" fill-opacity="0.26" stroke="#7dd3fc" stroke-opacity="0.2"/>
-    <rect x="144" y="386" width="288" height="180" rx="24" fill="#0f172a" fill-opacity="0.23" stroke="#7dd3fc" stroke-opacity="0.14"/>
-    <rect x="456" y="386" width="288" height="180" rx="24" fill="#0f172a" fill-opacity="0.23" stroke="#7dd3fc" stroke-opacity="0.14"/>
-    <rect x="768" y="386" width="286" height="180" rx="24" fill="#0f172a" fill-opacity="0.23" stroke="#7dd3fc" stroke-opacity="0.14"/>
-    <rect x="144" y="606" width="910" height="126" rx="24" fill="#0f172a" fill-opacity="0.22" stroke="#7dd3fc" stroke-opacity="0.14"/>
+  <path d="M72 276c166-108 328-130 494-94 136 30 190 82 266 64" fill="none" stroke="url(#accent)" stroke-opacity="0.4" stroke-width="3"/>
+  <path d="M72 356c214 54 382 56 566 8 92-24 140-18 194-2" fill="none" stroke="#7dd3fc" stroke-opacity="0.16" stroke-width="2"/>
+
+  <g font-family="Inter, SF Pro Display, Arial, sans-serif">
+    <text x="78" y="112" fill="#67e8f9" font-size="28" font-weight="700" letter-spacing="4">FIELD NOTES</text>
+    <text x="78" y="210" fill="#f8fafc" font-size="72" font-weight="800">Long-Context</text>
+    <text x="78" y="288" fill="#f8fafc" font-size="72" font-weight="800">Architecture</text>
+    <text x="78" y="366" fill="#f8fafc" font-size="72" font-weight="800">Analysis</text>
+    <text x="78" y="432" fill="#cbd5e1" font-size="28" font-weight="500">Dense, hybrid, MoE, diffusion, and system tradeoffs</text>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="78" y="504" width="744" height="154" rx="30" fill="#f8fafc" fill-opacity="0.1" stroke="#cbd5e1" stroke-opacity="0.18"/>
+    <rect x="78" y="696" width="232" height="206" rx="26" fill="#081f33" fill-opacity="0.6" stroke="#7dd3fc" stroke-opacity="0.22"/>
+    <rect x="334" y="696" width="232" height="206" rx="26" fill="#23103a" fill-opacity="0.58" stroke="#c084fc" stroke-opacity="0.22"/>
+    <rect x="590" y="696" width="232" height="206" rx="26" fill="#3f270d" fill-opacity="0.58" stroke="#f59e0b" stroke-opacity="0.22"/>
+    <rect x="78" y="940" width="744" height="166" rx="30" fill="#f8fafc" fill-opacity="0.08" stroke="#cbd5e1" stroke-opacity="0.14"/>
   </g>
 
   <g fill="none" stroke-linecap="round">
-    <path d="M208 474h164" stroke="#67e8f9" stroke-opacity="0.45" stroke-width="4"/>
-    <path d="M520 474h160" stroke="#c084fc" stroke-opacity="0.44" stroke-width="4"/>
-    <path d="M830 474h160" stroke="#f59e0b" stroke-opacity="0.44" stroke-width="4"/>
-    <path d="M284 566v42c0 18 14 32 32 32h282" stroke="#94a3b8" stroke-opacity="0.35" stroke-width="3"/>
-    <path d="M910 566v42c0 18-14 32-32 32H598" stroke="#94a3b8" stroke-opacity="0.35" stroke-width="3"/>
-    <path d="M600 340v46" stroke="#7dd3fc" stroke-opacity="0.32" stroke-width="3"/>
+    <path d="M162 798h64" stroke="#67e8f9" stroke-width="4" stroke-opacity="0.54"/>
+    <path d="M418 798h64" stroke="#c084fc" stroke-width="4" stroke-opacity="0.54"/>
+    <path d="M674 798h64" stroke="#f59e0b" stroke-width="4" stroke-opacity="0.54"/>
+    <path d="M450 658v38" stroke="#94a3b8" stroke-width="3" stroke-opacity="0.28"/>
+    <path d="M194 902v38c0 16 12 28 28 28h200" stroke="#94a3b8" stroke-width="3" stroke-opacity="0.28"/>
+    <path d="M706 902v38c0 16-12 28-28 28H478" stroke="#94a3b8" stroke-width="3" stroke-opacity="0.28"/>
   </g>
 
   <g>
-    <circle cx="208" cy="474" r="15" fill="#67e8f9"/>
-    <circle cx="372" cy="474" r="15" fill="#67e8f9"/>
-    <circle cx="520" cy="474" r="15" fill="#c084fc"/>
-    <circle cx="680" cy="474" r="15" fill="#c084fc"/>
-    <circle cx="830" cy="474" r="15" fill="#f59e0b"/>
-    <circle cx="990" cy="474" r="15" fill="#f59e0b"/>
-    <circle cx="600" cy="340" r="18" fill="#7dd3fc"/>
-    <circle cx="600" cy="640" r="22" fill="#f8fafc"/>
-  </g>
-
-  <g font-family="Inter, SF Pro Display, Arial, sans-serif">
-    <text x="144" y="154" fill="#67e8f9" font-size="30" font-weight="700" letter-spacing="5">FIELD NOTES</text>
-    <text x="144" y="240" fill="#f8fafc" font-size="72" font-weight="800">Long-Context</text>
-    <text x="144" y="316" fill="#f8fafc" font-size="72" font-weight="800">Architecture Analysis</text>
-    <text x="144" y="680" fill="#cbd5e1" font-size="32" font-weight="500">Dense transformers, hybrid attention, MoE, diffusion LLMs</text>
+    <circle cx="162" cy="798" r="13" fill="#67e8f9"/>
+    <circle cx="226" cy="798" r="13" fill="#67e8f9"/>
+    <circle cx="418" cy="798" r="13" fill="#c084fc"/>
+    <circle cx="482" cy="798" r="13" fill="#c084fc"/>
+    <circle cx="674" cy="798" r="13" fill="#f59e0b"/>
+    <circle cx="738" cy="798" r="13" fill="#f59e0b"/>
+    <circle cx="450" cy="582" r="18" fill="#7dd3fc"/>
+    <circle cx="450" cy="968" r="18" fill="#f8fafc"/>
   </g>
 </svg>
