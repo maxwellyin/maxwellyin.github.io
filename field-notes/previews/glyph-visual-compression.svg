@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Glyph visual compression cover</title>
+  <desc id="desc">Abstract cover with document panes compressing into visual tokens.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="52%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#7c2d12"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="48%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="166" cy="124" r="190" fill="#60a5fa" opacity="0.08"/>
+  <circle cx="1060" cy="748" r="236" fill="#fb7185" opacity="0.08"/>
+
+  <g opacity="0.96">
+    <rect x="110" y="96" width="980" height="708" rx="38" fill="#ffffff" fill-opacity="0.06" stroke="#f5d0fe" stroke-opacity="0.18"/>
+    <rect x="152" y="176" width="338" height="492" rx="28" fill="#fff7ed" fill-opacity="0.92"/>
+    <rect x="204" y="232" width="234" height="20" rx="10" fill="#cbd5e1"/>
+    <rect x="204" y="280" width="186" height="16" rx="8" fill="#e2e8f0"/>
+    <rect x="204" y="318" width="202" height="16" rx="8" fill="#e2e8f0"/>
+    <rect x="204" y="356" width="154" height="16" rx="8" fill="#e2e8f0"/>
+    <rect x="204" y="420" width="192" height="132" rx="24" fill="url(#accent)" opacity="0.9"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M534 420h90" stroke="#f8fafc" stroke-opacity="0.9" stroke-width="18"/>
+    <path d="M596 370l62 50-62 50" stroke="#f8fafc" stroke-opacity="0.9" stroke-width="18"/>
+  </g>
+
+  <g>
+    <rect x="694" y="238" width="282" height="282" rx="34" fill="#0f172a" fill-opacity="0.38" stroke="#f5d0fe" stroke-opacity="0.24"/>
+    <g transform="translate(738 282)">
+      <rect x="0" y="0" width="56" height="56" rx="14" fill="#60a5fa"/>
+      <rect x="72" y="0" width="56" height="56" rx="14" fill="#a78bfa"/>
+      <rect x="144" y="0" width="56" height="56" rx="14" fill="#f472b6"/>
+      <rect x="0" y="72" width="56" height="56" rx="14" fill="#67e8f9"/>
+      <rect x="72" y="72" width="56" height="56" rx="14" fill="#c084fc"/>
+      <rect x="144" y="72" width="56" height="56" rx="14" fill="#fb7185"/>
+      <rect x="0" y="144" width="56" height="56" rx="14" fill="#22d3ee"/>
+      <rect x="72" y="144" width="56" height="56" rx="14" fill="#8b5cf6"/>
+      <rect x="144" y="144" width="56" height="56" rx="14" fill="#f97316"/>
+    </g>
+  </g>
+
+  <g font-family="Inter, SF Pro Display, Arial, sans-serif">
+    <text x="152" y="154" fill="#e9d5ff" font-size="30" font-weight="700" letter-spacing="5">FIELD NOTES</text>
+    <text x="152" y="760" fill="#f8fafc" font-size="78" font-weight="800">Visual Compression</text>
+    <text x="152" y="826" fill="#f5d0fe" font-size="34" font-weight="500">Glyph, DeepSeek-OCR, long-context modeling through denser inputs</text>
+  </g>
+</svg>
