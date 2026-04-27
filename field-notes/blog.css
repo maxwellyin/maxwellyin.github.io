@@ -41,14 +41,7 @@ a:hover {
   text-decoration: underline;
 }
 
-.header-inner,
-.page-shell,
-.footer-inner {
-  max-width: calc(var(--max) + 32px);
-  margin: 0 auto;
-  padding-left: 16px;
-  padding-right: 16px;
-}
+
 
 .eyebrow {
   display: inline-flex;
