@@ -5,9 +5,8 @@
     { href: "/", label: "Home", page: "home" },
     { href: "/projects", label: "Projects", page: "projects" },
     { href: "/field-notes/", label: "Notes", page: "field-notes" },
-    { href: "https://github.com/maxwellyin", label: "GitHub", external: true },
-    { href: "https://www.linkedin.com/in/mjyin/", label: "LinkedIn", external: true },
     { href: "/resume", label: "Resume", page: "resume" },
+    { href: "/contact", label: "Contact", page: "contact" },
   ];
 
   const renderLinks = (items) =>
