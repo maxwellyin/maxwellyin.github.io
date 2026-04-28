@@ -6,7 +6,11 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
-  <title>Maxwell J. Yin - Machine Learning Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site-theme.css?v=20260428" />
+  <title>Maxwell J. Yin — Machine Learning Engineer</title>
   <meta
     name="description"
     content="Maxwell J. Yin is a Machine Learning Engineer in Toronto specializing in LLM-powered product systems, scalable retrieval, RAG, inference optimization, and production ML."
@@ -16,267 +20,294 @@
     content="Maxwell J. Yin, Machine Learning Engineer, LLM Systems, Distributed Training, Retrieval, RAG, FAISS, Inference Optimization, PyTorch, DeepSpeed, Production ML, Toronto"
   />
   <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #4b5563;
-      --accent: #1d4ed8;
-      --accent-dark: #1e40af;
-      --border: #e5e7eb;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --max-width: 940px;
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0f172a 100%);
+      color: white;
+      padding: 60px 20px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    * {
-      box-sizing: border-box;
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 55%);
+      pointer-events: none;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -40%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08), transparent 60%);
+      pointer-events: none;
     }
 
-    body {
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
       margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
     }
 
-    a {
-      color: var(--accent);
+    .hero-subtitle {
+      margin: 16px auto 0;
+      max-width: 600px;
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.65;
+    }
+
+    .hero-photo {
+      margin-top: 28px;
+      width: 160px;
+      border-radius: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 0 0 6px rgba(99, 102, 241, 0.08),
+        0 16px 40px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s ease;
+    }
+
+    .hero-photo:hover {
+      transform: scale(1.03) translateY(-3px);
+      box-shadow:
+        0 0 0 8px rgba(99, 102, 241, 0.12),
+        0 24px 48px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-nav {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-nav a {
+      color: rgba(219, 234, 254, 0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      transition: all var(--transition);
+    }
+
+    .hero-nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      transform: translateY(-2px);
       text-decoration: none;
     }
 
-    a:hover {
-      color: var(--accent-dark);
-      text-decoration: underline;
+    /* ── Layout ── */
+    .content-wrap {
+      max-width: calc(var(--max-width) + 32px);
+      margin: 0 auto;
+      padding: 32px 16px 54px;
     }
 
-    .container {
-      width: 100%;
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 24px;
+      transition: box-shadow var(--transition);
     }
 
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
-      color: white;
-      padding: 56px 20px 42px;
-      text-align: center;
+    .section-card:hover {
+      box-shadow: var(--shadow-lg);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: 750;
-      letter-spacing: 0.2px;
+    h2.section-title {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -0.02em;
     }
 
-    .subtitle {
-      margin: 12px auto 0;
-      max-width: 760px;
-      font-size: 1.08rem;
-      color: #d1d5db;
+    /* ── Two-column grid ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
-    .hero-image {
-      margin-top: 22px;
-      width: 176px;
-      max-width: 68vw;
-      border-radius: 16px;
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+    /* ── Experience ── */
+    .exp-item {
+      padding: 22px;
+      border: 1px solid #e6ebf2;
+      border-radius: var(--radius-sm);
+      background: #fcfdff;
+      transition: all var(--transition);
     }
 
-    .links {
+    .exp-item:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .exp-item h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .exp-meta {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .exp-item p {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 0.97rem;
+    }
+
+    .exp-item p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Featured Project ── */
+    .project-feature {
+      border: 1px solid #dbe4f0;
+      border-radius: var(--radius);
+      padding: 28px;
+      background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+      transition: all var(--transition);
+    }
+
+    .project-feature:hover {
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .project-feature h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .project-feature p {
+      margin: 0 0 14px;
+    }
+
+    .project-feature p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .project-actions {
       margin-top: 20px;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    .links a {
-      color: #dbeafe;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 999px;
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    /* ── Tags ── */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 10px;
     }
 
-    .links a:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.22);
-      transform: translateY(-1px);
-      text-decoration: none;
+    /* Stagger entrance for tags */
+    .tag-row .tag {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: tagIn 0.4s cubic-bezier(.4,0,.2,1) forwards;
     }
 
-    main {
-      padding: 30px 16px 50px;
+    @keyframes tagIn {
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    section {
-      max-width: var(--max-width);
-      margin: 0 auto 24px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 28px 28px 24px;
-    }
-
-    h2 {
-      margin-top: 0;
-      margin-bottom: 14px;
-      font-size: 1.42rem;
-      color: #111827;
-      letter-spacing: 0.1px;
-    }
-
-    h3 {
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-      color: #0f172a;
-    }
-
-    p {
-      margin: 0 0 14px;
-      color: var(--text);
-    }
-
-    ul {
+    /* ── Publications ── */
+    .pub-list {
+      list-style: none;
+      padding: 0;
       margin: 0;
-      padding-left: 22px;
     }
 
-    li {
-      margin-bottom: 10px;
+    .pub-list li {
+      position: relative;
+      padding: 14px 0 14px 28px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .muted {
-      color: var(--muted);
+    .pub-list li:last-child {
+      border-bottom: none;
+    }
+
+    .pub-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+
+    .pub-list li:last-child::before {
+      display: none;
+    }
+
+    .pub-venue {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 4px;
     }
 
     .lead {
       font-size: 1.03rem;
     }
 
-    .experience-list {
-      display: grid;
-      gap: 18px;
-    }
-
-    .experience-item {
-      padding: 20px 20px 16px;
-      border: 1px solid #e6ebf2;
-      border-radius: 16px;
-      background: #fcfdff;
-    }
-
-    .experience-meta {
-      margin-bottom: 10px;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .project-card {
-      border: 1px solid #dbe4f0;
-      border-radius: 20px;
-      padding: 24px;
-      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
-    }
-
-    .project-card p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .notes-actions {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .notes-actions a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 15px;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    .project-actions {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .project-actions a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    .primary-link {
-      background: var(--accent);
-      color: white;
-    }
-
-    .primary-link:hover {
-      background: var(--accent-dark);
-      color: white;
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .secondary-link {
-      border: 1px solid #bfdbfe;
-      background: white;
-      color: var(--accent);
-    }
-
-    .secondary-link:hover {
-      background: #eff6ff;
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #1e3a8a;
-      font-size: 0.94rem;
-      font-weight: 600;
-    }
-
-    .publication-note {
-      margin-bottom: 14px;
+    .muted {
       color: var(--muted);
     }
 
+    .pub-note {
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
     footer {
       text-align: center;
       color: var(--muted);
@@ -284,147 +315,129 @@
       font-size: 0.95rem;
     }
 
-    #fun-stuff {
-      color: var(--muted);
-      font-size: 0.85rem;
-      opacity: 0.6;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    #fun-stuff:hover {
-      color: var(--accent);
-      opacity: 1;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 640px) {
-      header {
-        padding-top: 46px;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-
-      section {
-        padding: 22px 18px 18px;
-      }
-
-      .experience-item,
-      .project-card {
-        padding: 18px;
-      }
+    /* ── Responsive ── */
+    @media (max-width: 740px) {
+      .hero { padding: 46px 20px 38px; }
+      .hero h1 { font-size: 2rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .content-wrap { padding: 24px 14px 40px; }
+      .section-card { padding: 24px 20px; }
+      .two-col { grid-template-columns: 1fr; }
+      .exp-item { padding: 18px; }
     }
   </style>
 </head>
 <body data-page="home">
-  <div class="container">
-    <header>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
       <h1>Maxwell J. Yin</h1>
-      <p class="subtitle">
+      <p class="hero-subtitle">
         Machine Learning Engineer specializing in LLM-powered product systems, scalable retrieval, and production ML.
       </p>
-      <img class="hero-image" src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
-      <div class="links" data-site-shell="home-nav"></div>
-    </header>
+      <img class="hero-photo" src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
+      <div class="hero-nav" data-site-shell="home-nav"></div>
+    </div>
+  </section>
 
-    <main>
-      <section>
-        <h2>About</h2>
-          <p class="lead">
-            Machine Learning Engineer specializing in LLM-powered product systems, scalable retrieval, and production ML, based in Toronto, Canada.
+  <!-- Main Content -->
+  <div class="content-wrap">
+
+    <!-- About -->
+    <div class="section-card reveal">
+      <h2 class="section-title">About</h2>
+      <p class="lead">
+        Machine Learning Engineer specializing in LLM-powered product systems, scalable retrieval, and production ML, based in Toronto, Canada.
+      </p>
+      <p>
+        Ph.D. in NLP from Western University. I build end-to-end ML systems that turn model capabilities into reliable, low-latency, user-facing applications, with experience across distributed training, evaluation, retrieval, and inference optimization.
+      </p>
+    </div>
+
+    <!-- Experience -->
+    <div class="section-card reveal">
+      <h2 class="section-title">Experience</h2>
+      <div style="display:grid; gap:16px;">
+        <div class="exp-item">
+          <h3>Huawei Noah's Ark Lab — Machine Learning Engineer</h3>
+          <div class="exp-meta">Toronto, ON · 2025 – 2026</div>
+          <p>
+            Built large-scale LLM training and evaluation pipelines, including a 400M-parameter Transformer trained on 40B tokens across 8×H100 GPUs, to support reproducible model selection and deployment-aware decision making.
           </p>
           <p>
-            Ph.D. in NLP from Western University. I build end-to-end ML systems that turn model capabilities into reliable, low-latency, user-facing applications, with experience across distributed training, evaluation, retrieval, and inference optimization.
+            Focused on distributed training, system profiling, and evaluation, improving training stability, multi-GPU efficiency, and the ability to compare model quality, latency, and cost under real-world deployment constraints.
           </p>
-      </section>
-
-      <section>
-        <h2>Experience</h2>
-        <div class="experience-list">
-          <div class="experience-item">
-            <h3>Huawei Noah’s Ark Lab — Machine Learning Engineer</h3>
-            <div class="experience-meta">Toronto, ON · 2025 – 2026</div>
-            <p>
-              Built large-scale LLM training and evaluation pipelines, including a 400M-parameter Transformer trained on 40B tokens across 8×H100 GPUs, to support reproducible model selection and deployment-aware decision making.
-            </p>
-            <p>
-              Focused on distributed training, system profiling, and evaluation, improving training stability, multi-GPU efficiency, and the ability to compare model quality, latency, and cost under real-world deployment constraints.
-            </p>
-          </div>
-
-          <div class="experience-item">
-            <h3>Western University — Graduate Research Assistant</h3>
-            <div class="experience-meta">London, ON · 2021 – 2025</div>
-            <p>
-              Built production-scale semantic retrieval systems over 500K+ documents and 1.7M passages, replacing expensive reranking pipelines with FAISS-based ANN retrieval in a unified embedding space.
-            </p>
-            <p>
-              Combined research and engineering across retrieval, evaluation, and system design, improving end-to-end latency by more than 5× while strengthening result quality, scalability, and responsiveness for downstream LLM applications.
-            </p>
-          </div>
         </div>
-      </section>
-
-      <section>
-        <h2>Featured Project</h2>
-        <div class="project-card">
-          <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
+        <div class="exp-item">
+          <h3>Western University — Graduate Research Assistant</h3>
+          <div class="exp-meta">London, ON · 2021 – 2025</div>
           <p>
-            CineSeek is a production-style semantic movie search system for complex natural-language queries. It combines LLM-based query understanding and rewriting, FAISS-based ANN retrieval, and agent-guided reranking and explanation to improve relevance, robustness, and interpretability.
+            Built production-scale semantic retrieval systems over 500K+ documents and 1.7M passages, replacing expensive reranking pipelines with FAISS-based ANN retrieval in a unified embedding space.
           </p>
           <p>
-            The project reflects how I build product-oriented GenAI systems: improving query understanding and user experience while keeping retrieval, serving, and deployment fast, scalable, and reliable.
+            Combined research and engineering across retrieval, evaluation, and system design, improving end-to-end latency by more than 5× while strengthening result quality, scalability, and responsiveness for downstream LLM applications.
           </p>
-          <div class="project-actions">
-            <a class="primary-link" href="https://cineseek.maxwellyin.com" target="_blank" rel="noopener">Live Demo</a>
-            <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
-            <a class="secondary-link" href="/projects">All Projects</a>
-          </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section>
-        <h2>Technical Focus</h2>
-          <div class="tag-row">
-            <span class="tag">LLM Systems</span>
-            <span class="tag">Agentic Workflows</span>
-            <span class="tag">Distributed Training</span>
-            <span class="tag">Inference Optimization</span>
-            <span class="tag">Retrieval &amp; RAG</span>
-            <span class="tag">FAISS</span>
-            <span class="tag">LLM Evaluation</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">DeepSpeed</span>
-            <span class="tag">vLLM</span>
-            <span class="tag">FastAPI</span>
-          </div>
-      </section>
+    <!-- Featured Project -->
+    <div class="section-card reveal">
+      <h2 class="section-title">Featured Project</h2>
+      <div class="project-feature">
+        <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
+        <p>
+          CineSeek is a production-style semantic movie search system for complex natural-language queries. It combines LLM-based query understanding and rewriting, FAISS-based ANN retrieval, and agent-guided reranking and explanation to improve relevance, robustness, and interpretability.
+        </p>
+        <p class="muted">
+          The project reflects how I build product-oriented GenAI systems: improving query understanding and user experience while keeping retrieval, serving, and deployment fast, scalable, and reliable.
+        </p>
+        <div class="project-actions">
+          <a class="primary-link" href="https://cineseek.maxwellyin.com" target="_blank" rel="noopener">Live Demo</a>
+          <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
+          <a class="secondary-link" href="/projects">All Projects</a>
+        </div>
+      </div>
+    </div>
 
-      <section>
-        <h2>Research & Publications</h2>
-        <p class="publication-note">
+    <!-- Technical Focus -->
+    <div class="section-card reveal">
+      <h2 class="section-title">Technical Focus</h2>
+      <div class="tag-row">
+        <span class="tag" style="animation-delay:.05s">LLM Systems</span>
+        <span class="tag" style="animation-delay:.1s">Agentic Workflows</span>
+        <span class="tag" style="animation-delay:.15s">Distributed Training</span>
+        <span class="tag" style="animation-delay:.2s">Inference Optimization</span>
+        <span class="tag" style="animation-delay:.25s">Retrieval &amp; RAG</span>
+        <span class="tag" style="animation-delay:.3s">FAISS</span>
+        <span class="tag" style="animation-delay:.35s">LLM Evaluation</span>
+        <span class="tag" style="animation-delay:.4s">PyTorch</span>
+        <span class="tag" style="animation-delay:.45s">DeepSpeed</span>
+        <span class="tag" style="animation-delay:.5s">vLLM</span>
+        <span class="tag" style="animation-delay:.55s">FastAPI</span>
+      </div>
+    </div>
+
+    <!-- Publications -->
+    <div class="section-card reveal">
+        <h2 class="section-title">Research &amp; Publications</h2>
+        <p class="muted" style="margin-bottom:14px;">
           First-author publications in TACL, NAACL Findings, AAAI, and Expert Systems with Applications, spanning NLP, question answering, representation learning, and scalable retrieval systems.
         </p>
-        <ul>
-          <li>
+        <ul style="padding-left:22px; margin:0;">
+          <li style="margin-bottom:8px;">
             <strong>TACL 2024</strong>:
             <em>Source-Free Domain Adaptation for Question Answering with Masked Self-training</em>
           </li>
-          <li>
+          <li style="margin-bottom:8px;">
             <strong>NAACL Findings 2024</strong>:
             <em>Source-Free Unsupervised Domain Adaptation for Question Answering via Prompt-Assisted Self-learning</em>
           </li>
-          <li>
+          <li style="margin-bottom:8px;">
             <strong>AAAI 2025</strong>:
             <em>MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</em>
           </li>
-          <li>
+          <li style="margin-bottom:8px;">
             <strong>Expert Systems with Applications 2024</strong>:
             <em>A Fast Local Citation Recommendation Algorithm Scalable to Multi-topics</em>
           </li>
@@ -433,12 +446,44 @@
             <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
           </li>
         </ul>
-      </section>
+    </div>
 
-    </main>
-
-    <footer data-site-shell="footer"></footer>
   </div>
-  <script src="assets/site-shell.js?v=20260427-2"></script>
+
+  <footer data-site-shell="footer"></footer>
+
+  <script src="assets/site-shell.js?v=20260428"></script>
+  <script>
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger tag animation on scroll
+    const tagRows = document.querySelectorAll('.tag-row');
+    const tagObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.tag').forEach(tag => {
+            tag.style.animationPlayState = 'running';
+          });
+          tagObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    tagRows.forEach(row => {
+      row.querySelectorAll('.tag').forEach(tag => {
+        tag.style.animationPlayState = 'paused';
+      });
+      tagObs.observe(row);
+    });
+  </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-@import url("../assets/site-theme.css?v=20260427-4");
+@import url("../assets/site-theme.css?v=20260428");
 
 :root {
   --bg: #f4f6fb;
@@ -22,7 +22,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(29, 78, 216, 0.10), transparent 28%),
