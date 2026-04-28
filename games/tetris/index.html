@@ -89,6 +89,19 @@
       font-size: 1.4rem;
       font-weight: 700;
     }
+    .auto-btn {
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .auto-btn:hover { background: #e5e7eb; }
+    .auto-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
     canvas {
       width: 100%;
       height: auto;
@@ -118,8 +131,11 @@
     </div>
     
     <div class="score-row">
-      <span class="score-label">Score</span>
-      <span class="score-val" id="score-val">0</span>
+      <div>
+        <span class="score-label">Score</span>
+        <span class="score-val" id="score-val">0</span>
+      </div>
+      <button id="auto-btn" class="auto-btn">Auto: OFF</button>
     </div>
     
     <canvas id="tetris" width="240" height="400"></canvas>
@@ -187,34 +203,27 @@
             const px = x + offset.x;
             const py = y + offset.y;
             
+            const m = 0.06; // margin
+            const s = 1 - m * 2; // size
+            const r = 0.25; // border radius
+            
+            // Base rounded stone
             context.fillStyle = color;
-            context.fillRect(px, py, 1, 1);
-            
-            // Highlight top-left
-            context.fillStyle = 'rgba(255, 255, 255, 0.6)';
             context.beginPath();
-            context.moveTo(px, py);
-            context.lineTo(px + 1, py);
-            context.lineTo(px + 0.8, py + 0.2);
-            context.lineTo(px + 0.2, py + 0.2);
-            context.lineTo(px + 0.2, py + 0.8);
-            context.lineTo(px, py + 1);
+            context.roundRect(px + m, py + m, s, s, r);
             context.fill();
             
-            // Shadow bottom-right
-            context.fillStyle = 'rgba(0, 0, 0, 0.3)';
+            // Soft top highlight
+            context.fillStyle = 'rgba(255, 255, 255, 0.35)';
             context.beginPath();
-            context.moveTo(px + 1, py + 1);
-            context.lineTo(px, py + 1);
-            context.lineTo(px + 0.2, py + 0.8);
-            context.lineTo(px + 0.8, py + 0.8);
-            context.lineTo(px + 0.8, py + 0.2);
-            context.lineTo(px + 1, py);
+            context.roundRect(px + m + 0.08, py + m + 0.08, s - 0.16, s * 0.35, r - 0.05);
             context.fill();
-
-            // Inner center (crystal core)
-            context.fillStyle = 'rgba(255, 255, 255, 0.2)';
-            context.fillRect(px + 0.2, py + 0.2, 0.6, 0.6);
+            
+            // Subtle bottom shadow
+            context.fillStyle = 'rgba(0, 0, 0, 0.25)';
+            context.beginPath();
+            context.roundRect(px + m + 0.08, py + m + s - (s * 0.35) - 0.08, s - 0.16, s * 0.35, r - 0.05);
+            context.fill();
           }
         });
       });
@@ -265,6 +274,70 @@
       dropCounter = 0;
     }
 
+    let autoMode = false;
+    let autoSpeedMultiplier = 1;
+    let aiTarget = null;
+    let aiRotationsDone = 0;
+
+    function cloneMatrix(mat) {
+      return mat.map(row => [...row]);
+    }
+
+    function evaluateBoard(board) {
+      let aggregateHeight = 0, completeLines = 0, holes = 0, bumpiness = 0;
+      let heights = new Array(board[0].length).fill(0);
+      for (let y = 0; y < board.length; ++y) {
+        let lineComplete = true;
+        for (let x = 0; x < board[y].length; ++x) {
+          if (board[y][x] !== 0) {
+            if (heights[x] === 0) heights[x] = board.length - y;
+          } else {
+            lineComplete = false;
+            if (heights[x] > 0) holes++;
+          }
+        }
+        if (lineComplete) completeLines++;
+      }
+      for (let x = 0; x < heights.length; x++) {
+        aggregateHeight += heights[x];
+        if (x > 0) bumpiness += Math.abs(heights[x] - heights[x-1]);
+      }
+      return -0.510066 * aggregateHeight + 0.760666 * completeLines - 0.35663 * holes - 0.184483 * bumpiness;
+    }
+
+    function getBestMove() {
+      let bestScore = -Infinity;
+      let bestMove = { rot: 0, x: player.pos.x };
+      for (let rot = 0; rot < 4; rot++) {
+        const testPlayer = { pos: {x: player.pos.x, y: player.pos.y}, matrix: cloneMatrix(player.matrix) };
+        for (let i = 0; i < rot; i++) {
+          for (let y = 0; y < testPlayer.matrix.length; ++y) {
+            for (let x = 0; x < y; ++x) {
+              [testPlayer.matrix[x][y], testPlayer.matrix[y][x]] = [testPlayer.matrix[y][x], testPlayer.matrix[x][y]];
+            }
+          }
+          testPlayer.matrix.forEach(row => row.reverse());
+        }
+        const boardWidth = arena[0].length;
+        for (let x = -3; x < boardWidth + 3; x++) {
+          testPlayer.pos.x = x;
+          testPlayer.pos.y = 0;
+          if (collide(arena, testPlayer)) continue;
+          while (!collide(arena, testPlayer)) testPlayer.pos.y++;
+          testPlayer.pos.y--;
+          const testBoard = cloneMatrix(arena);
+          testPlayer.matrix.forEach((row, y) => {
+            row.forEach((value, cx) => {
+              if (value !== 0) testBoard[y + testPlayer.pos.y][cx + testPlayer.pos.x] = value;
+            });
+          });
+          const score = evaluateBoard(testBoard);
+          if (score > bestScore) { bestScore = score; bestMove = { rot, x }; }
+        }
+      }
+      return bestMove;
+    }
+
     function playerMove(offset) {
       player.pos.x += offset;
       if (collide(arena, player)) {
@@ -277,6 +350,14 @@
       player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
       player.pos.y = 0;
       player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
+      
+      aiTarget = null;
+      aiRotationsDone = 0;
+      if (autoMode) {
+        aiTarget = getBestMove();
+        autoSpeedMultiplier += 0.3; // Speed up each drop
+      }
+
       if (collide(arena, player)) {
         arena.forEach(row => row.fill(0));
         player.score = 0;
@@ -315,13 +396,51 @@
     let dropCounter = 0;
     let dropInterval = 1000;
     let lastTime = 0;
+    let lastGamepadState = {};
 
     function update(time = 0) {
+      // Poll gamepad
+      const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+      const gp = gamepads[0];
+      if (gp) {
+        const buttons = {
+          left: gp.buttons[14]?.pressed || gp.axes[0] < -0.5 || gp.buttons[2]?.pressed, // D-pad Left, Stick Left, X
+          right: gp.buttons[15]?.pressed || gp.axes[0] > 0.5 || gp.buttons[1]?.pressed, // D-pad Right, Stick Right, B
+          up: gp.buttons[12]?.pressed || gp.axes[1] < -0.5 || gp.buttons[3]?.pressed,   // D-pad Up, Stick Up, Y
+          down: gp.buttons[13]?.pressed || gp.axes[1] > 0.5 || gp.buttons[0]?.pressed   // D-pad Down, Stick Down, A
+        };
+
+        if (buttons.left && !lastGamepadState.left) playerMove(-1);
+        if (buttons.right && !lastGamepadState.right) playerMove(1);
+        if (buttons.down && !lastGamepadState.down) playerDrop();
+        if (buttons.up && !lastGamepadState.up) playerRotate(1);
+
+        lastGamepadState = buttons;
+      }
+
       const deltaTime = time - lastTime;
       lastTime = time;
+      
+      let currentDropInterval = dropInterval;
+      if (autoMode) currentDropInterval = Math.max(20, dropInterval / autoSpeedMultiplier);
+      
       dropCounter += deltaTime;
-      if (dropCounter > dropInterval) {
-        playerDrop();
+      if (dropCounter > currentDropInterval) {
+        if (autoMode && aiTarget) {
+          if (aiRotationsDone < aiTarget.rot) {
+            playerRotate(1);
+            aiRotationsDone++;
+          } else if (player.pos.x < aiTarget.x) {
+            playerMove(1);
+          } else if (player.pos.x > aiTarget.x) {
+            playerMove(-1);
+          } else {
+            playerDrop();
+          }
+          dropCounter = 0;
+        } else {
+          playerDrop();
+        }
       }
       draw();
       requestAnimationFrame(update);
@@ -344,6 +463,21 @@
 
     const arena = createMatrix(12, 20);
     const player = { pos: {x: 0, y: 0}, matrix: null, score: 0 };
+
+    const autoBtn = document.getElementById('auto-btn');
+    autoBtn.addEventListener('click', () => {
+      autoMode = !autoMode;
+      if (autoMode) {
+        autoBtn.innerText = "Auto: ON";
+        autoBtn.classList.add("active");
+        autoSpeedMultiplier = 2;
+        aiTarget = getBestMove();
+      } else {
+        autoBtn.innerText = "Auto: OFF";
+        autoBtn.classList.remove("active");
+        autoSpeedMultiplier = 1;
+      }
+    });
 
     document.addEventListener('keydown', event => {
       // Prevent default scrolling for arrow keys

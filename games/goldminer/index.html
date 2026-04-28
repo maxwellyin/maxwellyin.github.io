@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gold Miner</title>
+  <link rel="stylesheet" href="../../assets/site-theme.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #1f2937, #111827);
+      color: white;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .game-card {
+      width: min(100%, 800px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .game-header h1 {
+      margin: 0;
+      font-size: 2rem;
+      background: linear-gradient(to right, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(0,0,0,0.4);
+      padding: 12px 20px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-links {
+      display: flex;
+      gap: 12px;
+    }
+    .home-link {
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      background: rgba(255,255,255,0.05);
+    }
+    .home-link:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    #game-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #8b5a2b; /* Dirt brown */
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: inset 0 10px 30px rgba(0,0,0,0.5);
+      border: 2px solid #5c3a21;
+    }
+    #sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15%;
+      background: #87CEEB; /* Sky blue */
+      border-bottom: 4px solid #4a5d23; /* Grass line */
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .overlay.hidden {
+      display: none;
+    }
+    .overlay h2 {
+      font-size: 3rem;
+      margin: 0 0 10px;
+      color: #fbbf24;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .btn {
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: #fbbf24;
+      color: #78350f;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.1s, filter 0.2s;
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+    }
+    .btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: scale(0.95);
+    }
+    .hint {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="game-card">
+  <div class="game-header">
+    <h1>Gold Miner</h1>
+    <div class="nav-links">
+      <a href="/games/" class="home-link">More games</a>
+      <a href="/" class="home-link">Home</a>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div style="color: #fbbf24;">Score: <span id="score">0</span></div>
+    <div>Target: <span id="target">500</span></div>
+    <div style="color: #ef4444;">Time: <span id="timer">60</span>s</div>
+  </div>
+
+  <div id="game-container">
+    <div id="sky"></div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="game-over" class="overlay hidden">
+      <h2 id="end-title">Time's Up!</h2>
+      <p id="end-score" style="font-size: 1.5rem; margin-bottom: 24px;">Your Score: 0</p>
+      <button id="restart-btn" class="btn">Play Again</button>
+    </div>
+  </div>
+
+  <p class="hint">Click, tap, or press SPACE/DOWN arrow to deploy the hook!</p>
+</div>
+
+<script>
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  const timerEl = document.getElementById('timer');
+  const targetEl = document.getElementById('target');
+  const gameOverOverlay = document.getElementById('game-over');
+  const endTitle = document.getElementById('end-title');
+  const endScore = document.getElementById('end-score');
+  const restartBtn = document.getElementById('restart-btn');
+
+  // Pre-render SVG sprites to Offscreen Canvas / Image for performance and quality
+  const sprites = {};
+  
+  function createSVGSprite(svgString, width, height) {
+    const img = new Image();
+    const svg64 = btoa(svgString);
+    const b64Start = 'data:image/svg+xml;base64,';
+    img.src = b64Start + svg64;
+    return img;
+  }
+
+  // Gold Nugget SVG
+  sprites.gold = createSVGSprite(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <path d="M20,40 Q10,10 40,20 Q70,5 85,30 Q95,60 70,85 Q40,95 20,80 Q5,60 20,40" fill="#fbbf24" stroke="#d97706" stroke-width="4"/>
+      <path d="M30,35 Q40,25 50,30 Q60,35 65,50 Q60,65 45,60 Q30,55 30,35" fill="#fcd34d" opacity="0.6"/>
+      <circle cx="35" cy="35" r="5" fill="white" opacity="0.8"/>
+    </svg>`, 100, 100);
+
+  // Rock SVG
+  sprites.rock = createSVGSprite(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <polygon points="20,80 10,40 40,10 70,20 90,50 80,85 50,95" fill="#6b7280" stroke="#374151" stroke-width="4"/>
+      <polygon points="30,70 25,45 45,25 65,30 75,55 65,75 45,80" fill="#9ca3af" opacity="0.4"/>
+      <polyline points="25,45 45,55 65,30" stroke="#4b5563" stroke-width="3" fill="none"/>
+    </svg>`, 100, 100);
+
+  // Diamond SVG
+  sprites.diamond = createSVGSprite(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <polygon points="50,90 10,40 30,10 70,10 90,40" fill="#67e8f9" stroke="#0891b2" stroke-width="4"/>
+      <polygon points="50,90 30,10 70,10" fill="#22d3ee" opacity="0.8"/>
+      <polygon points="50,90 10,40 90,40" fill="#06b6d4" opacity="0.5"/>
+      <polygon points="30,10 50,25 70,10" fill="white" opacity="0.7"/>
+    </svg>`, 100, 100);
+
+  // Mystery Bag SVG
+  sprites.bag = createSVGSprite(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <path d="M20,90 L80,90 C90,90 95,80 90,60 C85,40 70,30 50,30 C30,30 15,40 10,60 C5,80 10,90 20,90 Z" fill="#d97706" stroke="#92400e" stroke-width="4"/>
+      <path d="M40,30 Q50,10 60,30" fill="none" stroke="#92400e" stroke-width="6" stroke-linecap="round"/>
+      <text x="50" y="70" font-family="Arial" font-weight="bold" font-size="30" fill="#fef3c7" text-anchor="middle">?</text>
+    </svg>`, 100, 100);
+
+  // Game variables
+  let level = 1;
+  let score = 0;
+  let targetScore = 500;
+  let timeLeft = 60;
+  let lastTime = 0;
+  let timerInterval = 0;
+  let gameState = 'playing'; // playing, gameover, levelclear
+
+  const originX = 400;
+  const originY = 90; // Just below the grass line
+
+  const hook = {
+    x: originX,
+    y: originY,
+    angle: 0,
+    angleSpeed: 0.03,
+    angleDirection: 1, // 1 for right, -1 for left
+    maxAngle: Math.PI / 2.5,
+    length: 50,
+    maxLength: 700,
+    speed: 0,
+    state: 'swinging', // swinging, shooting, reeling
+    grabbedItem: null
+  };
+
+  let items = [];
+
+  // Item definitions
+  const itemTypes = {
+    gold_large: { sprite: 'gold', radius: 45, value: 500, mass: 5 },
+    gold_medium: { sprite: 'gold', radius: 30, value: 250, mass: 3 },
+    gold_small: { sprite: 'gold', radius: 15, value: 50, mass: 1.5 },
+    rock_large: { sprite: 'rock', radius: 40, value: 20, mass: 8 },
+    rock_small: { sprite: 'rock', radius: 25, value: 10, mass: 5 },
+    diamond: { sprite: 'diamond', radius: 15, value: 600, mass: 1 },
+    bag: { sprite: 'bag', radius: 25, value: 0, mass: 2, isBag: true }
+  };
+
+  function spawnLevel() {
+    items = [];
+    hook.state = 'swinging';
+    hook.length = 50;
+    hook.grabbedItem = null;
+    hook.speed = 0;
+
+    const count = 10 + level * 2;
+    for (let i = 0; i < count; i++) {
+      let r = Math.random();
+      let typeKey;
+      if (r < 0.1) typeKey = 'diamond';
+      else if (r < 0.2) typeKey = 'bag';
+      else if (r < 0.4) typeKey = 'gold_large';
+      else if (r < 0.6) typeKey = 'gold_medium';
+      else if (r < 0.75) typeKey = 'gold_small';
+      else if (r < 0.9) typeKey = 'rock_small';
+      else typeKey = 'rock_large';
+
+      const def = itemTypes[typeKey];
+      
+      // Random position avoiding overlap
+      let x, y, overlap;
+      let attempts = 0;
+      do {
+        x = def.radius + Math.random() * (800 - def.radius * 2);
+        y = 150 + def.radius + Math.random() * (600 - 150 - def.radius * 2);
+        overlap = false;
+        for (let item of items) {
+          const dx = item.x - x;
+          const dy = item.y - y;
+          if (Math.sqrt(dx*dx + dy*dy) < item.radius + def.radius + 10) {
+            overlap = true; break;
+          }
+        }
+        attempts++;
+      } while (overlap && attempts < 50);
+
+      items.push({
+        ...def,
+        typeKey: typeKey,
+        x: x,
+        y: y,
+        active: true
+      });
+    }
+  }
+
+  function initGame() {
+    score = 0;
+    level = 1;
+    targetScore = 500;
+    startLevel();
+  }
+
+  function startLevel() {
+    timeLeft = 60;
+    gameState = 'playing';
+    gameOverOverlay.classList.add('hidden');
+    spawnLevel();
+    updateUI();
+  }
+
+  function updateUI() {
+    scoreEl.innerText = score;
+    targetEl.innerText = targetScore;
+    timerEl.innerText = Math.ceil(timeLeft);
+  }
+
+  function shoot() {
+    if (gameState !== 'playing' || hook.state !== 'swinging') return;
+    hook.state = 'shooting';
+    hook.speed = 400; // pixels per second
+  }
+
+  function checkCollision() {
+    const hx = originX + Math.sin(hook.angle) * hook.length;
+    const hy = originY + Math.cos(hook.angle) * hook.length;
+
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (!item.active) continue;
+
+      const dx = hx - item.x;
+      const dy = hy - item.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      if (dist < item.radius + 10) { // +10 for hook grab hitbox
+        return item;
+      }
+    }
+    return null;
+  }
+
+  function update(dt) {
+    if (gameState !== 'playing') return;
+
+    timeLeft -= dt;
+    if (timeLeft <= 0) {
+      timeLeft = 0;
+      endLevel();
+    }
+    updateUI();
+
+    if (hook.state === 'swinging') {
+      hook.angle += hook.angleSpeed * hook.angleDirection * dt * 60;
+      if (Math.abs(hook.angle) > hook.maxAngle) {
+        hook.angle = Math.sign(hook.angle) * hook.maxAngle;
+        hook.angleDirection *= -1;
+      }
+    } else if (hook.state === 'shooting') {
+      hook.length += hook.speed * dt;
+      if (hook.length >= hook.maxLength) {
+        hook.state = 'reeling';
+      } else {
+        const hit = checkCollision();
+        if (hit) {
+          hook.grabbedItem = hit;
+          hit.active = false;
+          hook.state = 'reeling';
+        }
+      }
+    } else if (hook.state === 'reeling') {
+      let pullSpeed = 400; // Base pull speed
+      if (hook.grabbedItem) {
+        pullSpeed = 400 / hook.grabbedItem.mass;
+      }
+      
+      hook.length -= pullSpeed * dt;
+      if (hook.length <= 50) {
+        hook.length = 50;
+        hook.state = 'swinging';
+        
+        if (hook.grabbedItem) {
+          let val = hook.grabbedItem.value;
+          if (hook.grabbedItem.isBag) {
+            // Random bag value
+            const randomVals = [10, 100, 300, 500, 800];
+            val = randomVals[Math.floor(Math.random() * randomVals.length)];
+          }
+          score += val;
+          // Spawn floating text effect
+          floatingTexts.push({ x: originX, y: originY, text: "+" + val, life: 1.0 });
+          hook.grabbedItem = null;
+        }
+      }
+    }
+  }
+
+  const floatingTexts = [];
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw Items
+    items.forEach(item => {
+      if (item.active && sprites[item.sprite].complete) {
+        ctx.drawImage(sprites[item.sprite], item.x - item.radius, item.y - item.radius, item.radius * 2, item.radius * 2);
+      }
+    });
+
+    // Draw Hook Line
+    const hx = originX + Math.sin(hook.angle) * hook.length;
+    const hy = originY + Math.cos(hook.angle) * hook.length;
+    
+    ctx.beginPath();
+    ctx.moveTo(originX, originY);
+    ctx.lineTo(hx, hy);
+    ctx.strokeStyle = '#4b5563';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Draw Grabbed Item
+    if (hook.grabbedItem && sprites[hook.grabbedItem.sprite].complete) {
+      const item = hook.grabbedItem;
+      ctx.drawImage(sprites[item.sprite], hx - item.radius, hy - item.radius, item.radius * 2, item.radius * 2);
+    }
+
+    // Draw Claw
+    ctx.save();
+    ctx.translate(hx, hy);
+    ctx.rotate(-hook.angle);
+    ctx.beginPath();
+    ctx.arc(0, 0, 10, 0, Math.PI, true);
+    ctx.moveTo(-10, 0); ctx.lineTo(-15, 15);
+    ctx.moveTo(10, 0); ctx.lineTo(15, 15);
+    ctx.strokeStyle = '#9ca3af';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+    ctx.restore();
+
+    // Draw Miner (Simple representation)
+    ctx.fillStyle = '#1e3a8a';
+    ctx.fillRect(originX - 25, originY - 50, 50, 40); // Body
+    ctx.fillStyle = '#fcd34d';
+    ctx.beginPath(); ctx.arc(originX, originY - 60, 15, 0, Math.PI*2); ctx.fill(); // Head
+    ctx.fillStyle = '#b45309';
+    ctx.fillRect(originX - 30, originY - 10, 60, 10); // cart edge
+
+    // Draw Floating Texts
+    for (let i = floatingTexts.length - 1; i >= 0; i--) {
+      const ft = floatingTexts[i];
+      ft.life -= 0.02;
+      ft.y -= 1;
+      if (ft.life <= 0) {
+        floatingTexts.splice(i, 1);
+        continue;
+      }
+      ctx.fillStyle = `rgba(16, 185, 129, ${ft.life})`;
+      ctx.font = 'bold 24px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(ft.text, ft.x, ft.y - 20);
+    }
+  }
+
+  function loop(timestamp) {
+    const dt = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+    
+    // cap dt to prevent huge jumps if tab was inactive
+    if (dt < 0.1) {
+      update(dt);
+    }
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  function endLevel() {
+    gameState = 'levelclear';
+    if (score >= targetScore) {
+      // Next level
+      level++;
+      targetScore = Math.floor(targetScore * 1.5 + 500);
+      endTitle.innerText = "Level Cleared!";
+      endScore.innerText = `Ready for Level ${level}\nTarget: ${targetScore}`;
+      restartBtn.innerText = "Next Level";
+    } else {
+      // Game Over
+      endTitle.innerText = "Game Over";
+      endScore.innerText = `Final Score: ${score}`;
+      restartBtn.innerText = "Play Again";
+    }
+    gameOverOverlay.classList.remove('hidden');
+  }
+
+  // Input listeners
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' || e.code === 'ArrowDown') {
+      e.preventDefault();
+      shoot();
+    }
+  });
+
+  canvas.addEventListener('mousedown', shoot);
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); shoot(); }, {passive: false});
+
+  restartBtn.addEventListener('click', () => {
+    if (score >= targetScore && gameState === 'levelclear') {
+      startLevel();
+    } else {
+      initGame();
+    }
+  });
+
+  // Gamepad support
+  let lastGamepadState = false;
+  function pollGamepad() {
+    const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+    const gp = gamepads[0];
+    if (gp) {
+      const actionPressed = gp.buttons[0]?.pressed || gp.buttons[13]?.pressed; // A button or D-pad Down
+      if (actionPressed && !lastGamepadState) {
+        shoot();
+      }
+      lastGamepadState = actionPressed;
+    }
+    requestAnimationFrame(pollGamepad);
+  }
+  requestAnimationFrame(pollGamepad);
+
+  // Start
+  initGame();
+  requestAnimationFrame((ts) => { lastTime = ts; loop(ts); });
+
+</script>
+</body>
+</html>

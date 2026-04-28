@@ -79,6 +79,13 @@ h1 {
   margin: 12px 0 0;
 }
 
+.header-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
 .home-link {
   flex: 0 0 auto;
   padding: 9px 13px;
@@ -108,6 +115,7 @@ h1 {
   border: 1px solid rgba(23, 33, 43, 0.14);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.52);
+  color: var(--ink);
 }
 
 .score-row > div {

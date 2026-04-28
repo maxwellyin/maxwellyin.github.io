@@ -420,3 +420,27 @@ restartButton.addEventListener("click", restartGame);
 autoButton.addEventListener("click", toggleAutoMode);
 
 render();
+
+// Gamepad support
+let lastGamepadState = {};
+function pollGamepad() {
+  const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+  const gp = gamepads[0];
+  if (gp) {
+    const buttons = {
+      left: gp.buttons[14]?.pressed || gp.axes[0] < -0.5 || gp.buttons[2]?.pressed, // X
+      right: gp.buttons[15]?.pressed || gp.axes[0] > 0.5 || gp.buttons[1]?.pressed, // B
+      up: gp.buttons[12]?.pressed || gp.axes[1] < -0.5 || gp.buttons[3]?.pressed,   // Y
+      down: gp.buttons[13]?.pressed || gp.axes[1] > 0.5 || gp.buttons[0]?.pressed   // A
+    };
+
+    if (buttons.up && !lastGamepadState.up) setDirection(DIRECTIONS.ArrowUp);
+    if (buttons.down && !lastGamepadState.down) setDirection(DIRECTIONS.ArrowDown);
+    if (buttons.left && !lastGamepadState.left) setDirection(DIRECTIONS.ArrowLeft);
+    if (buttons.right && !lastGamepadState.right) setDirection(DIRECTIONS.ArrowRight);
+
+    lastGamepadState = buttons;
+  }
+  requestAnimationFrame(pollGamepad);
+}
+requestAnimationFrame(pollGamepad);

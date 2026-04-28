@@ -88,10 +88,25 @@
     #reset {
       cursor: pointer;
       user-select: none;
-      font-size: 1.8rem;
-      transition: transform 0.1s;
+      font-size: 1.6rem;
+      padding: 4px 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.1s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    #reset:active { transform: scale(0.9); }
+    #reset:hover {
+      background: #f9fafb;
+      transform: translateY(-1px);
+    }
+    #reset:active { 
+      transform: scale(0.95); 
+      background: #f3f4f6;
+    }
     #board {
       display: grid;
       gap: 2px;
@@ -99,6 +114,7 @@
       padding: 2px;
       border-radius: 12px;
       overflow: hidden;
+      width: 100%;
     }
     .cell {
       width: 100%;
@@ -145,14 +161,21 @@
     <div class="game-header">
       <div>
         <p class="eyebrow">Hidden Game</p>
-        <h1>Minesweeper</h1>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <h1>Minesweeper</h1>
+          <select id="diff-select" style="padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem; background: var(--bg); color: var(--text); cursor: pointer;">
+            <option value="10">10x10</option>
+            <option value="15">15x15</option>
+            <option value="20">20x20</option>
+          </select>
+        </div>
       </div>
       <a href="/games/" class="home-link">Back</a>
     </div>
     
     <div class="status-bar">
       <div id="mines-count" style="color: #ef4444;">010</div>
-      <div id="reset">😊</div>
+      <div id="reset" title="Restart Game">😊</div>
       <div id="timer" style="opacity: 0.5;">000</div>
     </div>
     
@@ -162,9 +185,9 @@
   </div>
 
   <script>
-    const ROWS = 10;
-    const COLS = 10;
-    const MINES = 10;
+    let ROWS = 10;
+    let COLS = 10;
+    let MINES = 10;
     let board = [];
     let minePositions = [];
     let gameOver = false;
@@ -174,10 +197,18 @@
     const boardEl = document.getElementById('board');
     const minesCountEl = document.getElementById('mines-count');
     const resetBtn = document.getElementById('reset');
+    const diffSelect = document.getElementById('diff-select');
     
-    boardEl.style.gridTemplateColumns = `repeat(${COLS}, 25px)`;
+    diffSelect.addEventListener('change', (e) => {
+      const size = parseInt(e.target.value);
+      ROWS = size;
+      COLS = size;
+      MINES = Math.floor(size * size * 0.12); // 12% mines density
+      init();
+    });
 
     function init() {
+      boardEl.style.gridTemplateColumns = `repeat(${COLS}, 1fr)`;
       board = [];
       minePositions = [];
       gameOver = false;
