@@ -345,7 +345,7 @@
   <div class="content-wrap">
 
     <!-- About -->
-    <div class="section-card reveal">
+    <div class="section-card">
       <h2 class="section-title">About</h2>
       <p class="lead">
         Machine Learning Engineer specializing in LLM-powered product systems, scalable retrieval, and production ML, based in Toronto, Canada.
@@ -356,7 +356,7 @@
     </div>
 
     <!-- Experience -->
-    <div class="section-card reveal">
+    <div class="section-card">
       <h2 class="section-title">Experience</h2>
       <div style="display:grid; gap:16px;">
         <div class="exp-item">
@@ -383,7 +383,7 @@
     </div>
 
     <!-- Featured Project -->
-    <div class="section-card reveal">
+    <div class="section-card">
       <h2 class="section-title">Featured Project</h2>
       <div class="project-feature">
         <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
@@ -402,7 +402,7 @@
     </div>
 
     <!-- Technical Focus -->
-    <div class="section-card reveal">
+    <div class="section-card">
       <h2 class="section-title">Technical Focus</h2>
       <div class="tag-row">
         <span class="tag" style="animation-delay:.05s">LLM Systems</span>
@@ -420,7 +420,7 @@
     </div>
 
     <!-- Publications -->
-    <div class="section-card reveal">
+    <div class="section-card">
         <h2 class="section-title">Research &amp; Publications</h2>
         <p class="muted" style="margin-bottom:14px;">
           First-author publications in TACL, NAACL Findings, AAAI, and Expert Systems with Applications, spanning NLP, question answering, representation learning, and scalable retrieval systems.
@@ -455,19 +455,7 @@
 
   <script src="assets/site-shell.js?v=20260428"></script>
   <script>
-    // Scroll reveal animation
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
-
-    // Stagger tag animation on scroll
+    // Stagger tag entrance animation
     const tagRows = document.querySelectorAll('.tag-row');
     const tagObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
