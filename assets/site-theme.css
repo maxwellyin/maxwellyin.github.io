@@ -140,12 +140,19 @@ header::before {
 }
 
 .nav-links a:hover,
-.nav-links .active {
+.nav-links a:focus-visible {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.22);
   color: white;
   text-decoration: none;
   transform: translateY(-1px);
+}
+
+.nav-links .active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: white;
+  text-decoration: none;
 }
 
 /* ── Page Titles ── */
