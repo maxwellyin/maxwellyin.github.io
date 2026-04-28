@@ -27,6 +27,12 @@
       box-shadow: var(--shadow);
       padding: 32px;
       margin-bottom: 24px;
+      transition: box-shadow 0.25s cubic-bezier(.4,0,.2,1), transform 0.25s cubic-bezier(.4,0,.2,1);
+    }
+
+    .news-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
     }
 
     .news-date {
