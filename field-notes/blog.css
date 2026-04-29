@@ -450,15 +450,123 @@ a:hover {
 }
 
 @media (max-width: 720px) {
-  
+  header {
+    padding: 28px 0 24px;
+  }
 
-  
+  .header-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  header h1 {
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    line-height: 1.06;
+  }
+
+  .subtitle {
+    margin-top: 12px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .hero-meta {
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .hero-meta span {
+    min-height: 32px;
+    padding: 0 11px;
+    font-size: 0.82rem;
+  }
+
+  .page-shell {
+    padding-top: 18px;
+    padding-bottom: 36px;
+  }
+
+  .tag-row {
+    gap: 8px;
+    margin: 0 0 14px;
+  }
+
+  .actions {
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+
+  .actions .button {
+    width: 100%;
+  }
 
   .article-card,
   .index-body,
   .intro-card,
   .meta-card {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .article-card,
+  .meta-card {
+    border-radius: 22px;
+  }
+
+  .article-card {
+    padding-top: 20px;
+    padding-bottom: 22px;
+  }
+
+  .meta-card {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .article-card h2 {
+    margin-top: 26px;
+    margin-bottom: 10px;
+    font-size: 1.45rem;
+  }
+
+  .article-card h3 {
+    margin-top: 22px;
+    font-size: 1.08rem;
+  }
+
+  .article-card p,
+  .article-card .lede {
+    font-size: 0.98rem;
+    line-height: 1.68;
+  }
+
+  .article-card figure,
+  .article-card .table-container {
+    margin: 22px 0;
+  }
+
+  .article-card .data-table {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .article-card .data-table th,
+  .article-card .data-table td {
+    padding: 12px 14px;
+  }
+
+  .article-card .data-table thead th:first-child,
+  .article-card .data-table tbody td:first-child {
+    min-width: 8.5rem;
+  }
+
+  .toc {
+    margin-top: 10px;
+    font-size: 0.95rem;
+  }
+
+  .toc .toc-sub {
+    padding-left: 10px;
   }
 }
