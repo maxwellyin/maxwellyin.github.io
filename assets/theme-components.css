@@ -80,6 +80,14 @@
   border-color: var(--border-hover) !important;
 }
 
+/* Card Paragraph Layouts (Unified to prevent unbalanced right whitespace) */
+.section-card .editorial-text,
+.intro-card p,
+.contact-card p,
+.about-card p {
+  max-width: none !important;
+}
+
 /* Global Buttons & Action Links */
 .primary-link,
 .button.primary {
