@@ -58,17 +58,23 @@
 .contact-card,
 .channel-card,
 .resume-card,
-.news-card {
+.news-card,
+.index-card,
+.article-card,
+.meta-card {
   background: var(--card) !important;
-  border: 1px solid var(--border) !important;
+  border: 1px solid rgba(148, 163, 184, 0.35) !important;
   border-radius: 22px !important;
-  box-shadow: var(--shadow) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), var(--shadow) !important;
   transition: all var(--transition) !important;
 }
 
 .project-card:hover,
 .channel-card:hover,
-.news-card:hover {
+.news-card:hover,
+.index-card:hover,
+.article-card:hover,
+.meta-card:hover {
   box-shadow: var(--shadow-lg) !important;
   transform: translateY(-3px) !important;
   border-color: var(--border-hover) !important;
