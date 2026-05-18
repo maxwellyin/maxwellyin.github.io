@@ -1,0 +1,149 @@
+/* ═══════════════════════════════════════════════
+   theme-components.css — Reusable UI Components
+   ═══════════════════════════════════════════════ */
+
+/* ── Rich Card Styling ── */
+.section-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+  border: 1px solid var(--border);
+}
+
+.section-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+}
+
+/* ── Custom Micro SaaS Tags & Chips ── */
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all var(--transition);
+}
+
+.tech-tag:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Shared Global Components (Deduplicated) ── */
+
+/* Global Cards */
+.intro-card,
+.project-card,
+.contact-card,
+.channel-card,
+.resume-card,
+.news-card {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 22px !important;
+  box-shadow: var(--shadow) !important;
+  transition: all var(--transition) !important;
+}
+
+.project-card:hover,
+.channel-card:hover,
+.news-card:hover {
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-3px) !important;
+  border-color: var(--border-hover) !important;
+}
+
+/* Global Buttons & Action Links */
+.primary-link,
+.button.primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  padding: 0 18px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  font-size: 0.92rem !important;
+  transition: all var(--transition) !important;
+  background: var(--accent) !important;
+  color: white !important;
+  border: 1px solid transparent !important;
+}
+
+.primary-link:hover,
+.button.primary:hover {
+  background: var(--accent-dark) !important;
+  color: white !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px var(--accent-glow) !important;
+  text-decoration: none !important;
+}
+
+.secondary-link,
+.button.secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  padding: 0 18px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  font-size: 0.92rem !important;
+  transition: all var(--transition) !important;
+  border: 1px solid rgba(37, 99, 235, 0.2) !important;
+  background: var(--card) !important;
+  color: var(--accent) !important;
+}
+
+.secondary-link:hover,
+.button.secondary:hover {
+  background: var(--soft) !important;
+  color: var(--accent-dark) !important;
+  border-color: var(--accent-dark) !important;
+  transform: translateY(-1px) !important;
+  text-decoration: none !important;
+}
+
+/* Global Tag / Pill Component */
+.tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 11px !important;
+  border-radius: 999px !important;
+  background: #eef2ff !important;
+  color: #1e3a8a !important;
+  border: 1px solid rgba(29, 78, 216, 0.12) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  transition: all var(--transition) !important;
+  text-decoration: none !important;
+}
+
+.tag:hover {
+  background: #e0e7ff !important;
+  transform: translateY(-1px) !important;
+  text-decoration: none !important;
+}

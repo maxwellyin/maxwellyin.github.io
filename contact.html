@@ -10,126 +10,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site-theme.css?v=20260428" />
+  <link rel="stylesheet" href="/assets/contact.css?v=20260518" />
   <title>Contact - Maxwell J. Yin</title>
   <meta
     name="description"
     content="Contact Maxwell J. Yin for technical collaboration, research discussion, and machine learning engineering opportunities."
   />
-  <style>
-    :root {
-      --max-width: 860px;
-    }
-
-    h1 {
-      font-size: clamp(2.25rem, 4.7vw, 3.7rem);
-    }
-
-    .subtitle {
-      max-width: 720px;
-    }
-
-    .contact-card,
-    .channel-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-card {
-      padding: 28px 30px;
-      margin-bottom: 24px;
-    }
-
-    .contact-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.03rem;
-    }
-
-    .channel-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .channel-card {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: box-shadow 0.25s cubic-bezier(.4,0,.2,1), transform 0.25s cubic-bezier(.4,0,.2,1);
-    }
-    .channel-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .channel-icon {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-      color: var(--accent);
-      opacity: 0.9;
-    }
-    .channel-icon svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .channel-card:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-      transform: translateY(-3px);
-    }
-
-    .channel-label {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 800;
-      font-size: 0.8rem;
-    }
-
-    .channel-title {
-      margin: 0;
-      font-size: 1.5rem;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-    }
-
-    .channel-copy {
-      color: var(--muted);
-      font-size: 0.98rem;
-      margin: 0;
-      flex: 1;
-    }
-
-    .channel-link {
-      width: fit-content;
-    }
-
-    @media (max-width: 860px) {
-      .channel-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 780px) {
-      .contact-card,
-      .channel-card { padding: 24px; }
-    }
-  </style>
 </head>
 <body data-page="contact">
+  <!-- Main Sticky Nav Shell -->
+  <nav class="top-nav" aria-label="Primary navigation" data-site-shell="subpage-nav"></nav>
+
   <header>
     <div class="header-inner">
-      <nav class="top-nav" aria-label="Primary navigation" data-site-shell="subpage-nav"></nav>
       <h1>Contact</h1>
     </div>
   </header>
 
-  <main>
+  <main class="content-wrap">
     <section class="contact-card">
       <p>If you want to talk about model systems, retrieval infrastructure, reproduction work, or product-facing ML engineering, feel free to reach out through whichever channel is most convenient.</p>
     </section>

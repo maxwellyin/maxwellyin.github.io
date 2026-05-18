@@ -1,0 +1,96 @@
+/* ── contact.css — Contact Page Specific Styles ── */
+
+:root {
+  --max-width: 860px;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 4.7vw, 3.7rem);
+}
+
+.subtitle {
+  max-width: 720px;
+}
+
+.contact-card {
+  padding: 28px 30px;
+  margin-bottom: 24px;
+}
+
+.contact-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.channel-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.channel-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.channel-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.channel-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.channel-label {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.channel-title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.channel-copy {
+  color: var(--muted);
+  font-size: 0.98rem;
+  margin: 0;
+  flex: 1;
+}
+
+.channel-link {
+  width: fit-content;
+}
+
+@media (max-width: 860px) {
+  .channel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .contact-card,
+  .channel-card { 
+    padding: 24px; 
+  }
+}

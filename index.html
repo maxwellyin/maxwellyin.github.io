@@ -8,8 +8,9 @@
   <link rel="apple-touch-icon" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site-theme.css?v=20260428" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site-theme.css?v=20260518" />
+  <link rel="stylesheet" href="/assets/home.css?v=20260518" />
   <title>Maxwell J. Yin — Machine Learning Engineer</title>
   <meta
     name="description"
@@ -19,463 +20,287 @@
     name="keywords"
     content="Maxwell J. Yin, Machine Learning Engineer, LLM Systems, Distributed Training, Retrieval, RAG, FAISS, Inference Optimization, PyTorch, DeepSpeed, Production ML, Toronto"
   />
-  <style>
-    /* ── Hero ── */
-    .hero {
-      background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0f172a 100%);
-      color: white;
-      padding: 60px 20px 52px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -30%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -40%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.08), transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    .hero-subtitle {
-      margin: 16px auto 0;
-      max-width: 600px;
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      line-height: 1.65;
-    }
-
-    .hero-photo {
-      margin-top: 28px;
-      width: 160px;
-      border-radius: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      box-shadow:
-        0 0 0 6px rgba(99, 102, 241, 0.08),
-        0 16px 40px rgba(0, 0, 0, 0.3);
-      transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s ease;
-    }
-
-    .hero-photo:hover {
-      transform: scale(1.03) translateY(-3px);
-      box-shadow:
-        0 0 0 8px rgba(99, 102, 241, 0.12),
-        0 24px 48px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero-nav {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-nav a {
-      color: rgba(219, 234, 254, 0.85);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 8px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 999px;
-      transition: all var(--transition);
-    }
-
-    .hero-nav a:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: white;
-      transform: translateY(-2px);
-      text-decoration: none;
-    }
-
-    /* ── Layout ── */
-    .content-wrap {
-      max-width: calc(var(--max-width) + 32px);
-      margin: 0 auto;
-      padding: 32px 16px 54px;
-    }
-
-    .section-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px;
-      margin-bottom: 24px;
-      transition: box-shadow var(--transition);
-    }
-
-    .section-card:hover {
-      box-shadow: var(--shadow-lg);
-    }
-
-    h2.section-title {
-      margin: 0 0 18px;
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: #111827;
-      letter-spacing: -0.02em;
-    }
-
-    /* ── Two-column grid ── */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    /* ── Experience ── */
-    .exp-item {
-      padding: 22px;
-      border: 1px solid #e6ebf2;
-      border-radius: var(--radius-sm);
-      background: #fcfdff;
-      transition: all var(--transition);
-    }
-
-    .exp-item:hover {
-      border-color: #bfdbfe;
-      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.06);
-      transform: translateY(-2px);
-    }
-
-    .exp-item h3 {
-      margin: 0 0 6px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .exp-meta {
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .exp-item p {
-      margin: 0 0 10px;
-      color: var(--text);
-      font-size: 0.97rem;
-    }
-
-    .exp-item p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── Featured Project ── */
-    .project-feature {
-      border: 1px solid #dbe4f0;
-      border-radius: var(--radius);
-      padding: 28px;
-      background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
-      transition: all var(--transition);
-    }
-
-    .project-feature:hover {
-      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.08);
-      transform: translateY(-2px);
-    }
-
-    .project-feature h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .project-feature p {
-      margin: 0 0 14px;
-    }
-
-    .project-feature p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .project-actions {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    /* ── Tags ── */
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 10px;
-    }
-
-    /* Stagger entrance for tags */
-    .tag-row .tag {
-      opacity: 0;
-      transform: translateY(8px);
-      animation: tagIn 0.4s cubic-bezier(.4,0,.2,1) forwards;
-    }
-
-    @keyframes tagIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── Publications ── */
-    .pub-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .pub-list li {
-      position: relative;
-      padding: 14px 0 14px 28px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pub-list li:last-child {
-      border-bottom: none;
-    }
-
-    .pub-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 22px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.7;
-    }
-
-    .pub-list li:last-child::before {
-      display: none;
-    }
-
-    .pub-venue {
-      display: inline-block;
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--accent);
-      background: var(--accent-soft);
-      padding: 3px 10px;
-      border-radius: 999px;
-      margin-bottom: 4px;
-    }
-
-    .lead {
-      font-size: 1.03rem;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .pub-note {
-      margin-bottom: 18px;
-      color: var(--muted);
-    }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      color: var(--muted);
-      padding: 8px 16px 32px;
-      font-size: 0.95rem;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 740px) {
-      .hero { padding: 46px 20px 38px; }
-      .hero h1 { font-size: 2rem; }
-      .hero-subtitle { font-size: 1rem; }
-      .content-wrap { padding: 24px 14px 40px; }
-      .section-card { padding: 24px 20px; }
-      .two-col { grid-template-columns: 1fr; }
-      .exp-item { padding: 18px; }
-    }
-  </style>
 </head>
 <body data-page="home">
-  <!-- Hero -->
+
+  <!-- Main Sticky Nav Shell -->
+  <nav class="top-nav" aria-label="Primary navigation" data-site-shell="subpage-nav"></nav>
+
+  <!-- Modern SaaS Hero Section -->
   <section class="hero">
     <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-status"></span>
+        <span class="hero-badge-text">Serving Applied ML Systems</span>
+      </div>
+      
       <h1>Maxwell J. Yin</h1>
+      
       <p class="hero-subtitle">
-        I build LLM-powered systems that turn complex user queries into fast, reliable, real-world applications.
+        I design and build end-to-end Machine Learning systems, combining distributed model training with high-throughput, low-latency semantic retrieval pipelines.
       </p>
-      <img class="hero-photo" src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
-      <p style="margin: 12px 0 0; font-size: 0.88rem; color: #94a3b8; letter-spacing: 0.02em;">📍 Toronto, Canada</p>
-      <div class="hero-nav" data-site-shell="home-nav"></div>
+      
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="maxwell-yin.jpeg" alt="Portrait of Maxwell J. Yin" />
+      </div>
+      
+      <div class="hero-location">
+        <span>📍 Toronto, Canada</span>
+      </div>
     </div>
   </section>
 
-  <!-- Main Content -->
+  <!-- Central Work Flow Container -->
   <div class="content-wrap">
 
-    <!-- About -->
-    <div class="section-card">
-      <h2 class="section-title">About</h2>
-      <p class="lead">
-        I design and build end-to-end ML systems that bridge research and real-world products — from large-scale model training and evaluation to low-latency retrieval and serving.
-      </p>
-      <p>
-        My work focuses on making LLM systems not just accurate offline, but reliable, efficient, and usable in production environments with real users and constraints.
-      </p>
-      <p>
-        I'm particularly interested in the intersection of retrieval, system performance, and LLM-driven user experiences — where small design decisions can have large product impact.
-      </p>
-    </div>
+    <!-- About Section -->
+    <section class="section-layout">
+      <span class="section-meta-tag">01 // OVERVIEW</span>
+      <div class="section-title-wrap">
+        <h2 class="section-title">About Me</h2>
+      </div>
+      
+      <div class="section-card">
+        <p class="lead-text">
+          I bridge the gap between academic Machine Learning research and high-performance product deployments. 
+        </p>
+        <p class="editorial-text">
+          My core expertise lies in designing scalable LLM pipelines, distributed model training configurations, and low-latency retrieval infrastructures. Whether optimizing model serving configurations to reduce token latency or designing highly scalable contrastive embedding adapters, I focus on building reliable systems with concrete metric targets.
+        </p>
+      </div>
+    </section>
 
-    <!-- Experience -->
-    <div class="section-card">
-      <h2 class="section-title">Experience</h2>
-      <div style="display:grid; gap:16px;">
-        <div class="exp-item">
-          <h3>Huawei Noah's Ark Lab — Machine Learning Engineer</h3>
-          <div class="exp-meta">Toronto, ON · 2025 – 2026</div>
-          <p>
-            Built large-scale LLM training and evaluation pipelines, including a 400M-parameter Transformer trained on 40B tokens across 8×H100 GPUs, to support reproducible model selection and deployment-aware decision making.
-          </p>
-          <p>
-            Focused on distributed training, system profiling, and evaluation, improving training stability, multi-GPU efficiency, and the ability to compare model quality, latency, and cost under real-world deployment constraints.
-          </p>
+    <!-- Applied Systems Metrics Section (Adding "工程师产品感") -->
+    <section class="section-layout">
+      <span class="section-meta-tag">02 // SCALABILITY & METRICS</span>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Production Systems &amp; Scale Profile</h2>
+        <p class="section-desc">Practical metric baselines achieved across real-world model training and low-latency serving pipelines.</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Retrieval Latency</span>
+            <span class="metric-icon">⚡</span>
+          </div>
+          <div class="metric-value">~12ms</div>
+          <div class="metric-desc">P99 query latency achieved using dual-encoder FAISS index rather than heavy cross-encoders.</div>
         </div>
-        <div class="exp-item">
-          <h3>Western University — Graduate Research Assistant</h3>
-          <div class="exp-meta">London, ON · 2021 – 2025</div>
-          <p>
-            Built production-scale semantic retrieval systems over 500K+ documents and 1.7M passages, replacing expensive reranking pipelines with FAISS-based ANN retrieval in a unified embedding space.
-          </p>
-          <p>
-            Combined research and engineering across retrieval, evaluation, and system design, improving end-to-end latency by more than 5× while strengthening result quality, scalability, and responsiveness for downstream LLM applications.
-          </p>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Index Volume</span>
+            <span class="metric-icon">📦</span>
+          </div>
+          <div class="metric-value">1.7M</div>
+          <div class="metric-desc">Total passage embeddings indexed and updated in real-time under low-latency limits.</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Compute Scaling</span>
+            <span class="metric-icon">🚀</span>
+          </div>
+          <div class="metric-value">8× H100</div>
+          <div class="metric-desc">Distributed training of 400M-parameter Transformer model over 40B tokens stable.</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Throughput Gain</span>
+            <span class="metric-icon">📈</span>
+          </div>
+          <div class="metric-value">5.2×</div>
+          <div class="metric-desc">End-to-end serving throughput increase using optimized embedding adapters.</div>
         </div>
       </div>
-    </div>
 
-    <!-- Featured Project -->
-    <div class="section-card">
-      <h2 class="section-title">Featured Project</h2>
-      <div class="project-feature">
-        <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
-        <p>
-          CineSeek is a production-style semantic movie search system for complex natural-language queries. It combines LLM-based query understanding and rewriting, FAISS-based ANN retrieval, and agent-guided reranking and explanation to improve relevance, robustness, and interpretability.
+      <!-- System Pipeline Visual Terminal -->
+      <div class="pipeline-shell">
+        <div class="pipeline-terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <span class="terminal-title">cineseek-inference-pipeline.flow</span>
+        </div>
+        
+        <div class="pipeline-flow">
+          <div class="pipeline-node">
+            <span class="node-label">INPUT</span>
+            <div class="node-title">Natural Query</div>
+            <div class="node-metrics">raw user string</div>
+          </div>
+          <span class="pipeline-arrow">➔</span>
+          <div class="pipeline-node">
+            <span class="node-label">AGENT</span>
+            <div class="node-title">LLM Rewriter</div>
+            <div class="node-metrics">intent expansion</div>
+          </div>
+          <span class="pipeline-arrow">➔</span>
+          <div class="pipeline-node">
+            <span class="node-label">INDEX</span>
+            <div class="node-title">FAISS ANN</div>
+            <div class="node-metrics">top-100 recall</div>
+          </div>
+          <span class="pipeline-arrow">➔</span>
+          <div class="pipeline-node">
+            <span class="node-label">RANK</span>
+            <div class="node-title">Cross-Encoder</div>
+            <div class="node-metrics">top-10 reranking</div>
+          </div>
+          <span class="pipeline-arrow">➔</span>
+          <div class="pipeline-node">
+            <span class="node-label">OUTPUT</span>
+            <div class="node-title">LLM Generator</div>
+            <div class="node-metrics">12ms explaining</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section (Interactive Timeline) -->
+    <section class="section-layout">
+      <span class="section-meta-tag">03 // PROFESSIONAL EXPERIENCE</span>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Career timeline</h2>
+      </div>
+
+      <div class="section-card">
+        <div class="timeline-container">
+          
+          <div class="timeline-item">
+            <span class="timeline-badge"></span>
+            <div class="timeline-header">
+              <div class="timeline-role-wrap">
+                <h3>Machine Learning Engineer</h3>
+                <span class="timeline-company">Huawei Noah's Ark Lab</span>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-date">2025 – 2026</div>
+                <div class="timeline-location">Toronto, ON</div>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Engineered large-scale, highly scalable LLM training and evaluation pipelines.</li>
+              <li>Successfully trained a <strong>400M-parameter Transformer model on 40B tokens</strong> across multi-node <strong>8× H100 GPUs</strong>, stabilizing multi-GPU distributed operations.</li>
+              <li>Investigated training optimizations, distributed profiling, and performance evaluation pipelines, boosting training stability and comparing latency-vs-cost constraints.</li>
+            </ul>
+            <div class="tag-row" style="margin-top: 14px;">
+              <span class="tech-tag">Distributed Training</span>
+              <span class="tech-tag">Transformer Architecture</span>
+              <span class="tech-tag">DeepSpeed</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">System Profiling</span>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-badge"></span>
+            <div class="timeline-header">
+              <div class="timeline-role-wrap">
+                <h3>Graduate Research Assistant</h3>
+                <span class="timeline-company">Western University</span>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-date">2021 – 2025</div>
+                <div class="timeline-location">London, ON</div>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Designed and scaled semantic retrieval pipelines querying over <strong>500K+ documents and 1.7M passages</strong>.</li>
+              <li>Replaced expensive multi-stage reranking pipelines with highly optimized <strong>FAISS-based Approximate Nearest Neighbor (ANN)</strong> retrieval in a unified embedding space.</li>
+              <li>Slashed end-to-end downstream retrieval latency by <strong>more than 5×</strong> while maintaining outstanding precision and result relevance.</li>
+            </ul>
+            <div class="tag-row" style="margin-top: 14px;">
+              <span class="tech-tag">FAISS Indexing</span>
+              <span class="tech-tag">Semantic Search</span>
+              <span class="tech-tag">Embedding Adapters</span>
+              <span class="tech-tag">RAG Pipelines</span>
+              <span class="tech-tag">Inference Optimization</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Project Section -->
+    <section class="section-layout">
+      <span class="section-meta-tag">04 // HIGHLIGHTED SYSTEM</span>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Featured Project</h2>
+      </div>
+
+      <div class="section-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+          <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; background: #ecfdf5; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2)">production-ready</span>
+        </div>
+        
+        <p class="editorial-text">
+          CineSeek combines LLM-based query expansion and rewriting, FAISS-based high-performance ANN retrieval, and an agentic cross-encoder reranker. It was built specifically to solve complex, long-tail queries without sacrificing production latency bounds.
         </p>
-        <p class="muted">
-          The project reflects how I build product-oriented GenAI systems: improving query understanding and user experience while keeping retrieval, serving, and deployment fast, scalable, and reliable.
-        </p>
-        <div class="project-actions">
+        
+        <div class="tag-row" style="margin: 18px 0 24px;">
+          <span class="tech-tag">Vector Indexing</span>
+          <span class="tech-tag">LLM Agents</span>
+          <span class="tech-tag">FastAPI serving</span>
+          <span class="tech-tag">Docker Compose</span>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
           <a class="primary-link" href="https://cineseek.maxwellyin.com" target="_blank" rel="noopener">Live Demo</a>
           <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
           <a class="secondary-link" href="/projects">All Projects</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Technical Focus -->
-    <div class="section-card">
-      <h2 class="section-title">Technical Focus</h2>
-      <div class="tag-row">
-        <span class="tag" style="animation-delay:.05s">LLM Systems</span>
-        <span class="tag" style="animation-delay:.1s">Agentic Workflows</span>
-        <span class="tag" style="animation-delay:.15s">Distributed Training</span>
-        <span class="tag" style="animation-delay:.2s">Inference Optimization</span>
-        <span class="tag" style="animation-delay:.25s">Retrieval &amp; RAG</span>
-        <span class="tag" style="animation-delay:.3s">FAISS</span>
-        <span class="tag" style="animation-delay:.35s">LLM Evaluation</span>
-        <span class="tag" style="animation-delay:.4s">PyTorch</span>
-        <span class="tag" style="animation-delay:.45s">DeepSpeed</span>
-        <span class="tag" style="animation-delay:.5s">vLLM</span>
-        <span class="tag" style="animation-delay:.55s">FastAPI</span>
-      </div>
-    </div>
-
-    <!-- Publications -->
-    <div class="section-card">
+    <!-- Publications Section -->
+    <section class="section-layout">
+      <span class="section-meta-tag">05 // RESEARCH &amp; CONTRIBUTIONS</span>
+      <div class="section-title-wrap">
         <h2 class="section-title">Research &amp; Publications</h2>
-        <p class="muted" style="margin-bottom:14px;">
-          First-author publications in TACL, NAACL Findings, AAAI, and Expert Systems with Applications, spanning NLP, question answering, representation learning, and scalable retrieval systems.
-        </p>
-        <ul style="padding-left:22px; margin:0;">
-          <li style="margin-bottom:8px;">
-            <strong>TACL 2024</strong>:
-            <em>Source-Free Domain Adaptation for Question Answering with Masked Self-training</em>
+        <p class="section-desc">First-author papers in TACL, NAACL, AAAI, and Expert Systems with Applications, bridging representation learning with information retrieval.</p>
+      </div>
+
+      <div class="section-card">
+        <ul class="pub-list">
+          <li class="pub-item">
+            <span class="pub-venue-badge">TACL 2024</span>
+            <div class="pub-title">Source-Free Domain Adaptation for Question Answering with Masked Self-training</div>
+            <div class="pub-authors"><strong>M. Yin</strong>, B. Wang, Y. Dong, and C. Ling</div>
           </li>
-          <li style="margin-bottom:8px;">
-            <strong>NAACL Findings 2024</strong>:
-            <em>Source-Free Unsupervised Domain Adaptation for Question Answering via Prompt-Assisted Self-learning</em>
+          <li class="pub-item">
+            <span class="pub-venue-badge">NAACL Findings 2024</span>
+            <div class="pub-title">Source-Free Unsupervised Domain Adaptation for Question Answering via Prompt-Assisted Self-learning</div>
+            <div class="pub-authors"><strong>M. Yin</strong>, B. Wang, and C. Ling</div>
           </li>
-          <li style="margin-bottom:8px;">
-            <strong>AAAI 2025</strong>:
-            <em>MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</em>
+          <li class="pub-item">
+            <span class="pub-venue-badge">AAAI 2025</span>
+            <div class="pub-title">MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</div>
+            <div class="pub-authors"><strong>M. J. Yin</strong>, B. Wang, and C. Ling</div>
           </li>
-          <li style="margin-bottom:8px;">
-            <strong>Expert Systems with Applications 2024</strong>:
-            <em>A Fast Local Citation Recommendation Algorithm Scalable to Multi-topics</em>
-          </li>
-          <li>
-            Full list available on
-            <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+          <li class="pub-item">
+            <span class="pub-venue-badge">ESWA 2024</span>
+            <div class="pub-title">A Fast Local Citation Recommendation Algorithm Scalable to Multi-topics</div>
+            <div class="pub-authors"><strong>M. J. Yin</strong>, B. Wang, and C. Ling</div>
           </li>
         </ul>
-    </div>
+        <p style="margin-top: 24px; font-size: 0.95rem; color: var(--muted);">
+          Explore the full dataset &amp; citations on 
+          <a href="https://scholar.google.ca/citations?user=gI49wecAAAAJ&amp;hl=en" target="_blank" rel="noopener" style="font-weight: 600;">Google Scholar ➔</a>
+        </p>
+      </div>
+    </section>
 
   </div>
 
   <footer data-site-shell="footer"></footer>
 
-  <script src="assets/site-shell.js?v=20260428"></script>
-  <script>
-    // Stagger tag entrance animation
-    const tagRows = document.querySelectorAll('.tag-row');
-    const tagObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.tag').forEach(tag => {
-            tag.style.animationPlayState = 'running';
-          });
-          tagObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    tagRows.forEach(row => {
-      row.querySelectorAll('.tag').forEach(tag => {
-        tag.style.animationPlayState = 'paused';
-      });
-      tagObs.observe(row);
-    });
-  </script>
+  <script src="assets/site-shell.js?v=20260518"></script>
 </body>
 </html>

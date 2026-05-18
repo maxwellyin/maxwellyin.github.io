@@ -1,0 +1,39 @@
+/* ── resume.css — Resume Page Specific Styles ── */
+
+.subtitle {
+  display: none;
+}
+
+.resume-card {
+  overflow: hidden;
+}
+
+.resume-intro {
+  padding: 24px 28px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.resume-viewer {
+  width: 100%;
+  height: min(1120px, 78vh);
+  border: 0;
+  display: block;
+  background: #f3f4f6;
+}
+
+@media (max-width: 780px) {
+  .resume-intro {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .resume-viewer {
+    height: 72vh;
+  }
+}
