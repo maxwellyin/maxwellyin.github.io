@@ -1,4 +1,6 @@
 @import url("../assets/site-theme.css?v=20260428");
+@import url("../assets/theme-core.css?v=20260518");
+@import url("../assets/theme-shell.css?v=20260518");
 
 :root {
   --bg: var(--bg);
