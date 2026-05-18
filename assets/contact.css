@@ -13,7 +13,7 @@ h1 {
 }
 
 .contact-card {
-  padding: 28px 30px;
+  padding: var(--card-padding);
   margin-bottom: 24px;
 }
 
@@ -91,6 +91,6 @@ h1 {
 @media (max-width: 780px) {
   .contact-card,
   .channel-card { 
-    padding: 24px; 
+    padding: var(--card-padding-mobile); 
   }
 }

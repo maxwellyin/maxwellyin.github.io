@@ -64,7 +64,7 @@
 .meta-card {
   background: var(--card) !important;
   border: 1px solid rgba(148, 163, 184, 0.35) !important;
-  border-radius: 22px !important;
+  border-radius: var(--radius-lg) !important;
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), var(--shadow) !important;
   transition: all var(--transition) !important;
 }

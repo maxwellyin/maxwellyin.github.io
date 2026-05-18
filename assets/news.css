@@ -58,6 +58,6 @@ h1 {
 
 @media (max-width: 780px) {
   .news-card { 
-    padding: 24px; 
+    padding: var(--card-padding-mobile); 
   }
 }

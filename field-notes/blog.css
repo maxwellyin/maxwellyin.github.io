@@ -109,7 +109,7 @@ a:hover {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 22px;
-  padding: 26px 28px;
+  padding: var(--card-padding);
 }
 
 .intro-card p,
@@ -120,7 +120,7 @@ a:hover {
 
 .status-box {
   padding: 20px;
-  border-radius: 22px;
+  border-radius: var(--radius-lg);
   border: 1px solid rgba(29, 78, 216, 0.14);
   background: linear-gradient(180deg, #fbfdff 0%, var(--accent-soft) 100%);
 }
@@ -159,7 +159,7 @@ a:hover {
 }
 
 .index-body {
-  padding: 26px 28px;
+  padding: var(--card-padding);
 }
 
 .meta-line {
@@ -173,9 +173,9 @@ a:hover {
 
 .card-title {
   margin: 0 0 14px;
-  font-size: clamp(1.8rem, 3vw, 2.45rem);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  font-size: var(--card-title-size);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 .tag-row {
@@ -448,8 +448,8 @@ a:hover {
   .index-body,
   .intro-card,
   .meta-card {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: var(--card-padding-mobile);
+    padding-right: var(--card-padding-mobile);
   }
 
   .article-card,
