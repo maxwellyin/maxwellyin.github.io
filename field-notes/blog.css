@@ -10,10 +10,6 @@
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-sans);
-  color: var(--text);
   line-height: 1.72;
 }
 
@@ -72,21 +68,6 @@ a:hover {
   font-weight: 500;
   letter-spacing: 0.02em;
 }
-
-.page-shell,
-.header-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.page-shell {
-  position: relative;
-  z-index: 10;
-  padding-top: 30px;
-  padding-bottom: 56px;
-}
-
 
 
 .index-layout {
@@ -380,17 +361,10 @@ a:hover {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 780px) {
   header {
     padding: 28px 0 24px;
   }
-
-  .page-shell,
-  .header-inner {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   header h1 {
     font-size: clamp(2rem, 8vw, 2.7rem);
     line-height: 1.06;
@@ -413,10 +387,7 @@ a:hover {
     font-size: 0.82rem;
   }
 
-  .page-shell {
-    padding-top: 18px;
-    padding-bottom: 36px;
-  }
+
 
   .tag-row {
     gap: 8px;
