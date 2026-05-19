@@ -23,8 +23,19 @@
     const links = renderLinks(navItems);
     navContainer.innerHTML = `
       <a class="brand" href="/">Maxwell J. Yin</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
       <div class="nav-links">${links}</div>
     `;
+
+    const toggleBtn = navContainer.querySelector('.menu-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = navContainer.classList.toggle('nav-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+      });
+    }
   }
 
   const homeNavContainer = document.querySelector('[data-site-shell="home-nav"]');
