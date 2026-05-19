@@ -1,16 +1,4 @@
-@import url("../assets/site-theme.css?v=20260428");
-@import url("../assets/theme-core.css?v=20260518");
-@import url("../assets/theme-shell.css?v=20260518");
-
 :root {
-  --bg: var(--bg);
-  --text: var(--text);
-  --muted: var(--muted);
-  --accent: var(--accent);
-  --accent-dark: var(--accent-dark);
-  --accent-soft: var(--accent-soft);
-  --border: var(--border);
-  --shadow: var(--shadow);
   --max: var(--max-width);
   --copy: var(--copy-width);
   --surface: var(--card);
@@ -78,10 +66,11 @@ a:hover {
   min-height: 36px;
   padding: 0 13px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #dbeafe;
-  font-size: 0.9rem;
-  font-weight: 600;
+  background: var(--soft);
+  color: #7f8faf;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .page-shell,
