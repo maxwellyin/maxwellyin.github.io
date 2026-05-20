@@ -12,6 +12,25 @@ const BASE_SPEED = 5;
 const MAX_SPEED = 15;
 const STORAGE_KEY = "maxwellyin.snake.bestScore";
 
+const colors = {
+  gridBg: "#ffffff",
+  gridColor: "rgba(15, 23, 42, 0.05)",
+  snakeHead: "#324e98",
+  snakeBody: "#3f5fb8",
+  food: "#ef4444",
+};
+
+function updateColorsFromTheme() {
+  const styles = getComputedStyle(document.documentElement);
+  colors.gridBg = styles.getPropertyValue("--grid-bg").trim() || colors.gridBg;
+  colors.gridColor = styles.getPropertyValue("--grid-color").trim() || colors.gridColor;
+  colors.snakeHead = styles.getPropertyValue("--snake-head").trim() || colors.snakeHead;
+  colors.snakeBody = styles.getPropertyValue("--snake").trim() || colors.snakeBody;
+  colors.food = styles.getPropertyValue("--food").trim() || colors.food;
+}
+
+updateColorsFromTheme();
+
 const DIRECTIONS = {
   ArrowUp: { x: 0, y: -1 },
   ArrowDown: { x: 0, y: 1 },
@@ -65,6 +84,7 @@ function startGame() {
 
 function restartGame() {
   window.cancelAnimationFrame(animationFrameId);
+  updateColorsFromTheme();
   state = createInitialState();
   pendingDirection = { ...state.direction };
   animationFrameId = null;
@@ -164,10 +184,10 @@ function speedForScore(score) {
 }
 
 function drawBoard() {
-  context.fillStyle = "#efe4d0";
+  context.fillStyle = colors.gridBg;
   context.fillRect(0, 0, board.width, board.height);
 
-  context.strokeStyle = "rgba(23, 33, 43, 0.07)";
+  context.strokeStyle = colors.gridColor;
   context.lineWidth = 1;
   for (let i = 1; i < GRID_SIZE; i += 1) {
     const pos = i * CELL_SIZE;
@@ -184,13 +204,13 @@ function drawBoard() {
 
 function drawSnake() {
   state.snake.forEach((part, index) => {
-    context.fillStyle = index === 0 ? "#145a39" : "#1f7a4d";
+    context.fillStyle = index === 0 ? colors.snakeHead : colors.snakeBody;
     drawRoundedCell(part.x, part.y, 6);
   });
 }
 
 function drawFood() {
-  context.fillStyle = "#d9482f";
+  context.fillStyle = colors.food;
   const centerX = state.food.x * CELL_SIZE + CELL_SIZE / 2;
   const centerY = state.food.y * CELL_SIZE + CELL_SIZE / 2;
   context.beginPath();
