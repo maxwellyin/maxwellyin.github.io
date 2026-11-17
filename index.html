@@ -10,15 +10,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site-theme.css?v=20260824215854" />
-  <link rel="stylesheet" href="/assets/home.css?v=20260824215854" />
-  <title>Maxwell J. Yin — Machine Learning Engineer</title>
+  <link rel="stylesheet" href="/assets/home.css?v=20261117110000" />
+  <title>Maxwell J. Yin — Machine Learning Engineer | Recommender Systems</title>
   <meta
     name="description"
-    content="Maxwell J. Yin is a Machine Learning Engineer II at Pinterest in Toronto, building large-scale machine learning systems for search and retrieval."
+    content="Maxwell J. Yin is a Machine Learning Engineer II at Pinterest in Toronto, working on large-scale recommender systems, representation learning, and scalable ML. His background spans distributed LLM training and information retrieval."
   />
   <meta
     name="keywords"
-    content="Maxwell J. Yin, Machine Learning Engineer II, Pinterest, Search, Retrieval, Representation Learning, Distributed Training, Low-Latency Serving, Production ML, Toronto"
+    content="Maxwell J. Yin, Machine Learning Engineer, Pinterest, Recommender Systems, Recommendation Systems, Representation Learning, Candidate Retrieval, ML Systems, Distributed Training, Information Retrieval, Toronto"
   />
 </head>
 <body data-page="home">
@@ -31,13 +31,13 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="hero-badge-status"></span>
-        <span class="hero-badge-text">Serving Applied ML Systems</span>
+        <span class="hero-badge-text">Machine Learning Engineer II · Pinterest</span>
       </div>
       
       <h1>Maxwell J. Yin</h1>
       
       <p class="hero-subtitle">
-        I build large-scale Machine Learning systems for search and retrieval, combining representation learning, distributed training, and low-latency serving.
+        Building scalable machine learning systems for recommendation and content discovery, with a background in representation learning, information retrieval, and distributed model training.
       </p>
       
       <div class="hero-photo-wrap">
@@ -62,61 +62,140 @@
       
       <div class="section-card">
         <p class="lead-text">
-          I bridge academic Machine Learning research and large-scale production systems.
+          I'm fascinated by how machine learning works, from the underlying algorithms to the systems that make them useful at scale.
         </p>
         <p class="editorial-text">
-          My work spans search and retrieval, representation learning, distributed model training, and low-latency serving. I focus on building reliable ML systems with measurable improvements in quality, scalability, and efficiency.
+          I enjoy digging into complex problems, questioning assumptions, and understanding why something works rather than simply whether it works. My interests span representation learning, information retrieval, language models, and recommender systems.
+        </p>
+        <p class="editorial-text">
+          I value rigorous experimentation, practical engineering, and solutions that are both elegant and effective. I'm particularly drawn to problems where research ideas meet real-world constraints.
         </p>
       </div>
     </section>
 
-    <!-- Applied Systems Metrics Section (Adding "工程师产品感") -->
+    <!-- Experience Section (Interactive Timeline) -->
     <section class="section-layout">
-      <span class="section-meta-tag">02 // SCALABILITY & METRICS</span>
+      <span class="section-meta-tag">02 // PROFESSIONAL EXPERIENCE</span>
       <div class="section-title-wrap">
-        <h2 class="section-title">Production Systems &amp; Scale Profile</h2>
-        <p class="section-desc">Practical metric baselines achieved across real-world model training and low-latency serving pipelines.</p>
+        <h2 class="section-title">Career timeline</h2>
       </div>
 
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-header">
-            <span class="metric-title">Retrieval Latency</span>
-            <span class="metric-icon">⚡</span>
+      <div class="section-card">
+        <div class="timeline-container">
+
+          <div class="timeline-item">
+            <span class="timeline-badge"></span>
+            <div class="timeline-header">
+              <div class="timeline-role-wrap">
+                <h3>Machine Learning Engineer II</h3>
+                <span class="timeline-company">Pinterest</span>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-date">2026 – Present</div>
+                <div class="timeline-location">Toronto, ON</div>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Working on machine learning models for large-scale recommendation and content discovery.</li>
+              <li>Focusing on representation learning, candidate retrieval, and model experimentation for recommender systems.</li>
+              <li>Contributing to model training and optimization workflows, with attention to recommendation quality and computational efficiency.</li>
+            </ul>
+            <div class="tag-row" style="margin-top: 14px;">
+              <span class="tech-tag">Recommender Systems</span>
+              <span class="tech-tag">Representation Learning</span>
+              <span class="tech-tag">Candidate Generation</span>
+              <span class="tech-tag">Model Training</span>
+            </div>
           </div>
-          <div class="metric-value">~12ms</div>
-          <div class="metric-desc">P99 query latency achieved using dual-encoder FAISS index rather than heavy cross-encoders.</div>
+          
+          <div class="timeline-item">
+            <span class="timeline-badge"></span>
+            <div class="timeline-header">
+              <div class="timeline-role-wrap">
+                <h3>Machine Learning Researcher</h3>
+                <span class="timeline-company">Huawei Noah's Ark Lab</span>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-date">2025 – 2026</div>
+                <div class="timeline-location">Toronto, ON</div>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Built and evaluated large language model training workflows using PyTorch, DeepSpeed, and distributed GPU infrastructure.</li>
+              <li>Trained a <strong>400M-parameter Transformer on 40B tokens</strong> using <strong>8× NVIDIA H100 GPUs</strong> and DeepSpeed ZeRO-3.</li>
+              <li>Improved training reliability through memory optimization, distributed checkpointing, and systematic evaluation of model quality and inference performance.</li>
+            </ul>
+            <div class="tag-row" style="margin-top: 14px;">
+              <span class="tech-tag">Distributed Training</span>
+              <span class="tech-tag">LLM Pretraining</span>
+              <span class="tech-tag">DeepSpeed ZeRO-3</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">System Profiling</span>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-badge"></span>
+            <div class="timeline-header">
+              <div class="timeline-role-wrap">
+                <h3>Machine Learning Researcher</h3>
+                <span class="timeline-company">Western University</span>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-date">2021 – 2025</div>
+                <div class="timeline-location">London, ON</div>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Designed and scaled semantic retrieval pipelines querying over <strong>500K+ documents and 1.7M passages</strong>.</li>
+              <li>Built end-to-end embedding and indexing workflows, using <strong>FAISS-based approximate nearest neighbor (ANN)</strong> search for scalable retrieval.</li>
+              <li>Reduced end-to-end retrieval latency by <strong>more than 5×</strong>, while evaluating retrieval quality and system performance.</li>
+            </ul>
+            <div class="tag-row" style="margin-top: 14px;">
+              <span class="tech-tag">Information Retrieval</span>
+              <span class="tech-tag">Semantic Search</span>
+              <span class="tech-tag">FAISS / ANN</span>
+              <span class="tech-tag">Representation Learning</span>
+              <span class="tech-tag">Model Evaluation</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Project Section -->
+    <section class="section-layout">
+      <span class="section-meta-tag">03 // FEATURED PROJECT</span>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Featured Project</h2>
+      </div>
+
+      <div class="section-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+          <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; background: #ecfdf5; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2)">Live demo</span>
+        </div>
+        
+        <p class="editorial-text">
+          CineSeek is a public, end-to-end semantic movie search project combining LLM-assisted query rewriting, FAISS-based ANN retrieval, cross-encoder reranking, and response generation. The live demo and source code illustrate a practical retrieval pipeline.
+        </p>
+        
+        <div class="tag-row" style="margin: 18px 0 24px;">
+          <span class="tech-tag">Vector Indexing</span>
+          <span class="tech-tag">LLM Agents</span>
+          <span class="tech-tag">FastAPI serving</span>
+          <span class="tech-tag">Docker Compose</span>
         </div>
 
-        <div class="metric-card">
-          <div class="metric-header">
-            <span class="metric-title">Index Volume</span>
-            <span class="metric-icon">📦</span>
-          </div>
-          <div class="metric-value">1.7M</div>
-          <div class="metric-desc">Total passage embeddings indexed and updated in real-time under low-latency limits.</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-header">
-            <span class="metric-title">Compute Scaling</span>
-            <span class="metric-icon">🚀</span>
-          </div>
-          <div class="metric-value">8× H100</div>
-          <div class="metric-desc">Distributed training of 400M-parameter Transformer model over 40B tokens stable.</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-header">
-            <span class="metric-title">Throughput Gain</span>
-            <span class="metric-icon">📈</span>
-          </div>
-          <div class="metric-value">5.2×</div>
-          <div class="metric-desc">Serving QPS scaled 5.2× using optimized contrastive embedding adapters.</div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a class="primary-link" href="https://cineseek.maxwellyin.com" target="_blank" rel="noopener">Live Demo</a>
+          <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
+          <a class="secondary-link" href="/projects">All Projects</a>
         </div>
       </div>
 
-      <!-- System Pipeline Visual Terminal -->
+      <!-- CineSeek pipeline visualization -->
       <div class="pipeline-shell">
         <div class="pipeline-terminal-header">
           <div class="terminal-dots">
@@ -143,153 +222,30 @@
           <div class="pipeline-node">
             <span class="node-label">INDEX</span>
             <div class="node-title">FAISS ANN</div>
-            <div class="node-metrics">top-100 recall</div>
+            <div class="node-metrics">candidate retrieval</div>
           </div>
           <span class="pipeline-arrow">➔</span>
           <div class="pipeline-node">
             <span class="node-label">RANK</span>
             <div class="node-title">Cross-Encoder</div>
-            <div class="node-metrics">top-10 reranking</div>
+            <div class="node-metrics">relevance refinement</div>
           </div>
           <span class="pipeline-arrow">➔</span>
           <div class="pipeline-node">
             <span class="node-label">OUTPUT</span>
             <div class="node-title">LLM Generator</div>
-            <div class="node-metrics">12ms explaining</div>
+            <div class="node-metrics">generated explanation</div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section (Interactive Timeline) -->
-    <section class="section-layout">
-      <span class="section-meta-tag">03 // PROFESSIONAL EXPERIENCE</span>
-      <div class="section-title-wrap">
-        <h2 class="section-title">Career timeline</h2>
-      </div>
-
-      <div class="section-card">
-        <div class="timeline-container">
-
-          <div class="timeline-item">
-            <span class="timeline-badge"></span>
-            <div class="timeline-header">
-              <div class="timeline-role-wrap">
-                <h3>Machine Learning Engineer II</h3>
-                <span class="timeline-company">Pinterest</span>
-              </div>
-              <div class="timeline-meta">
-                <div class="timeline-date">2026 – Present</div>
-                <div class="timeline-location">Toronto, ON</div>
-              </div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Building large-scale Machine Learning systems for production search retrieval.</li>
-              <li>Working on representation learning, candidate generation, and retrieval quality for search systems.</li>
-              <li>Developing scalable data, training, evaluation, and serving pipelines.</li>
-            </ul>
-            <div class="tag-row" style="margin-top: 14px;">
-              <span class="tech-tag">Search Retrieval</span>
-              <span class="tech-tag">Representation Learning</span>
-              <span class="tech-tag">Candidate Generation</span>
-              <span class="tech-tag">ML Systems</span>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <span class="timeline-badge"></span>
-            <div class="timeline-header">
-              <div class="timeline-role-wrap">
-                <h3>Machine Learning Researcher</h3>
-                <span class="timeline-company">Huawei Noah's Ark Lab</span>
-              </div>
-              <div class="timeline-meta">
-                <div class="timeline-date">2025 – 2026</div>
-                <div class="timeline-location">Toronto, ON</div>
-              </div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Engineered large-scale, highly scalable LLM training and evaluation pipelines.</li>
-              <li>Successfully trained a <strong>400M-parameter Transformer model on 40B tokens</strong> across multi-node <strong>8× H100 GPUs</strong>, stabilizing multi-GPU distributed operations.</li>
-              <li>Investigated training optimizations, distributed profiling, and performance evaluation pipelines, boosting training stability and comparing latency-vs-cost constraints.</li>
-            </ul>
-            <div class="tag-row" style="margin-top: 14px;">
-              <span class="tech-tag">Distributed Training</span>
-              <span class="tech-tag">Transformer Architecture</span>
-              <span class="tech-tag">DeepSpeed</span>
-              <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">System Profiling</span>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <span class="timeline-badge"></span>
-            <div class="timeline-header">
-              <div class="timeline-role-wrap">
-                <h3>Graduate Research Assistant</h3>
-                <span class="timeline-company">Western University</span>
-              </div>
-              <div class="timeline-meta">
-                <div class="timeline-date">2021 – 2025</div>
-                <div class="timeline-location">London, ON</div>
-              </div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Designed and scaled semantic retrieval pipelines querying over <strong>500K+ documents and 1.7M passages</strong>.</li>
-              <li>Replaced expensive multi-stage reranking pipelines with highly optimized <strong>FAISS-based Approximate Nearest Neighbor (ANN)</strong> retrieval in a unified embedding space.</li>
-              <li>Slashed end-to-end downstream retrieval latency by <strong>more than 5×</strong> while maintaining outstanding precision and result relevance.</li>
-            </ul>
-            <div class="tag-row" style="margin-top: 14px;">
-              <span class="tech-tag">FAISS Indexing</span>
-              <span class="tech-tag">Semantic Search</span>
-              <span class="tech-tag">Embedding Adapters</span>
-              <span class="tech-tag">RAG Pipelines</span>
-              <span class="tech-tag">Inference Optimization</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Project Section -->
-    <section class="section-layout">
-      <span class="section-meta-tag">04 // HIGHLIGHTED SYSTEM</span>
-      <div class="section-title-wrap">
-        <h2 class="section-title">Featured Project</h2>
-      </div>
-
-      <div class="section-card">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
-          <h3>CineSeek: Agent-Enhanced Semantic Movie Search</h3>
-          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; background: #ecfdf5; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2)">production-ready</span>
-        </div>
-        
-        <p class="editorial-text">
-          CineSeek combines LLM-based query expansion and rewriting, FAISS-based high-performance ANN retrieval, and an agentic cross-encoder reranker. It was built specifically to solve complex, long-tail queries without sacrificing production latency bounds.
-        </p>
-        
-        <div class="tag-row" style="margin: 18px 0 24px;">
-          <span class="tech-tag">Vector Indexing</span>
-          <span class="tech-tag">LLM Agents</span>
-          <span class="tech-tag">FastAPI serving</span>
-          <span class="tech-tag">Docker Compose</span>
-        </div>
-
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a class="primary-link" href="https://cineseek.maxwellyin.com" target="_blank" rel="noopener">Live Demo</a>
-          <a class="secondary-link" href="https://github.com/maxwellyin/cineseek-semantic-search" target="_blank" rel="noopener">Source Code</a>
-          <a class="secondary-link" href="/projects">All Projects</a>
         </div>
       </div>
     </section>
 
     <!-- Publications Section -->
     <section class="section-layout">
-      <span class="section-meta-tag">05 // RESEARCH &amp; CONTRIBUTIONS</span>
+      <span class="section-meta-tag">04 // RESEARCH &amp; PUBLICATIONS</span>
       <div class="section-title-wrap">
         <h2 class="section-title">Research &amp; Publications</h2>
-        <p class="section-desc">First-author papers in TACL, NAACL, AAAI, and Expert Systems with Applications, bridging representation learning with information retrieval.</p>
+        <p class="section-desc">Selected publications from ICML, AAAI, TACL, NAACL Findings, and Expert Systems with Applications, spanning machine learning, language models, and information retrieval.</p>
       </div>
 
       <div class="section-card">
@@ -298,6 +254,11 @@
             <span class="pub-venue-badge">AAAI 2025</span>
             <div class="pub-title">MABR: Multilayer Adversarial Bias Removal Without Prior Bias Knowledge</div>
             <div class="pub-authors"><strong>M. J. Yin</strong>, B. Wang, and C. Ling</div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-venue-badge">ICML 2025</span>
+            <div class="pub-title">FedOne: Query-Efficient Federated Learning for Black-box Discrete Prompt Learning</div>
+            <div class="pub-authors">G. Wang, J. Fang, <strong>M. J. Yin</strong>, B. Gu, X. Chen, B. Wang, Y. Chang, and C. Ling</div>
           </li>
           <li class="pub-item">
             <span class="pub-venue-badge">TACL 2024</span>
